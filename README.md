@@ -168,7 +168,20 @@ const Hero = () => {
 export default Hero;
 ```
 
+4. How to change swiper.js left and right arrow and pagination bullet color: 
 
+```css
+.swiper-button-next,
+.swiper-button-prev {
+    color: #f89223;
+}
+
+
+/* Pagination bullets color */
+.swiper-pagination-bullet {
+    background-color: #f89223;
+}
+```
 
 ## Challenges I faced:
 1. To making the hero slider: 
