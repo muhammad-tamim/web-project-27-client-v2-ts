@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import HomeLayouts from "../layouts/HomeLayouts";
+import HomePage from "../pages/HomePage";
 
 export const routes = createBrowserRouter([
   {
@@ -8,8 +9,8 @@ export const routes = createBrowserRouter([
     children: [
       {
         index: true,
-
-      }
+        Component: HomePage
+      },
     ]
   }
 ])
