@@ -25,9 +25,13 @@ const Navbar = () => {
 
                 {/* right */}
                 <div className="flex items-center gap-3 lg:gap-6">
+
+                    {/* auth */}
                     <NavLink to={'/sign-in'} className={({ isActive }) => isActive ? 'text-black font-medium lg:text-xl' : 'text-[#8e9092] lg:text-lg'}>SignIn</NavLink>
                     <NavLink to={'/sign-up'} className={({ isActive }) => isActive ? 'text-black font-medium lg:text-xl' : 'text-[#8e9092] lg:text-lg'}>SignUp</NavLink>
-                    <div className="dropdown dropdown-end">
+
+                    {/* profile */}
+                    <div className="dropdown dropdown-end ">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
                                 <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
@@ -35,7 +39,7 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex="-1"
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                            className="menu menu-sm dropdown-content mt-3 w-52 p-2 shadow bg-[#f2f1ee] opacity-80">
                             <li>
                                 <Link to={'/profile'} className="justify-between">
                                     Setting
@@ -71,7 +75,7 @@ const Navbar = () => {
                             </div>
                             <ul
                                 tabIndex="-1"
-                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                                className="menu menu-sm dropdown-content mt-3 w-52 p-2 shadow bg-[#f2f1ee] opacity-80">
                                 <li>
                                     <Link to={'/profile'} className="justify-between">
                                         Setting
