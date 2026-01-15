@@ -11,6 +11,7 @@ import image2 from '../../../assets/images/chicken-tikka-masala.jpg'
 import image3 from '../../../assets/images/burger.jpg'
 import image4 from '../../../assets/images/raspberry.jpg'
 import { FaStar } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const slideItems = [
     { id: 1, title: 'Baked Chicken Breast', image: image1, rating: 4, description: 'A handful of simple ingredients typify the fresh, vibrant flavors of Greek cooking Lorem ipsum dolor sit amet..' },
@@ -22,14 +23,16 @@ const slideItems = [
 const Hero = () => {
     return (
         <div>
+
+            {/* for larger screens */}
             <div className='hidden lg:flex'>
                 <Swiper
-                    slidesPerView={2} spaceBetween={30} pagination={{ clickable: true }} loop={true} navigation={true}
+                    slidesPerView={2} spaceBetween={5} pagination={{ clickable: true }} loop={true} navigation={true}
                     modules={[Pagination, Navigation, Autoplay]} autoplay={{ delay: 2500, disableOnInteraction: false, }}>
                     {slideItems.map((item) => (
                         <SwiperSlide key={item.id}>
-                            <div className='relative h-[calc(100vh-262px)]'>
-                                <img className='h-full w-full object-cover' src={item.image} alt={item.title} />
+                            <div className='relative min-h-[calc(100vh-64px)]'>
+                                <img className='h-[calc(100vh-64px)] w-full object-fill' src={item.image} alt={item.title} />
 
                                 {/* Black overlay */}
                                 <div className="absolute inset-0 bg-black/60"></div>
@@ -42,6 +45,7 @@ const Hero = () => {
                                     </div>
                                     <h1 className='text-white font-bold text-5xl'>{item.title}</h1>
                                     <p className='text-white max-w-md'>{item.description}</p>
+                                    <Link to={'/recipe-details/:id'}><button className='btn bg-[#f89223] text-white'>View Details</button></Link>
                                 </div>
                             </div>
                         </SwiperSlide>
@@ -50,15 +54,15 @@ const Hero = () => {
                 </Swiper>
             </div>
 
-            {/* for small screen */}
+            {/* for small screens */}
             <div className='lg:hidden'>
                 <Swiper
-                    slidesPerView={1} spaceBetween={30} pagination={{ clickable: true }} loop={true}
-                    modules={[Pagination, Autoplay]} autoplay={{ delay: 2500, disableOnInteraction: false, }}>
+                    slidesPerView={1} spaceBetween={5} pagination={{ clickable: true }} loop={true} navigation={true}
+                    modules={[Pagination, Navigation, Autoplay]} autoplay={{ delay: 2500, disableOnInteraction: false, }}>
                     {slideItems.map((item) => (
                         <SwiperSlide key={item.id}>
-                            <div className='relative h-[calc(100vh-180px)] md:h-[calc(100vh-200px)]'>
-                                <img className='h-full w-full object-center' src={item.image} alt={item.title} />
+                            <div className='relative md:h-[calc(100vh-64px)]'>
+                                <img className='md:h-[calc(100vh-64px)] w-full object-fill' src={item.image} alt={item.title} />
 
                                 {/* Black overlay */}
                                 <div className="absolute inset-0 bg-black/60"></div>
@@ -69,8 +73,9 @@ const Hero = () => {
                                             <FaStar key={index} className='text-[#f89223]' />
                                         ))}
                                     </div>
-                                    <h1 className='text-white font-bold'>{item.title}</h1>
-                                    <p className='text-white text-xs px-4'>{item.description}</p>
+                                    <h1 className='text-white font-bold text-xl md:text-4xl'>{item.title}</h1>
+                                    <p className='text-white max-w-xs md:max-w-xl mx-auto px-2 text-xs md:text-lg'>{item.description}</p>
+                                    <Link to={'/recipe-details/:id'}><button className='btn btn-sm md:btn-md bg-[#f89223] text-white mt-2'>View Details</button></Link>
                                 </div>
                             </div>
                         </SwiperSlide>
@@ -78,6 +83,7 @@ const Hero = () => {
 
                 </Swiper>
             </div>
+
         </div>
 
     );

@@ -3,6 +3,13 @@
     color: #f89223;
 }
 
+@media screen and (max-width: 600px) {
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none;
+    }
+}
 
 /* Pagination bullets color */
 .swiper-pagination-bullet {
