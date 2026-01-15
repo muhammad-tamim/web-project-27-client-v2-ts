@@ -3,3 +3,9 @@
 @plugin "daisyui" {
     themes: light --default;
 }
+
+.test {
+    display: grid;
+    grid-template-columns: 50px 50px 50px;
+    justify-content: space-evenly;
+}
