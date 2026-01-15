@@ -8,7 +8,7 @@ const Navbar = () => {
     return (
         <>
             {/* for large screens */}
-            <div className="hidden md:flex justify-around items-center bg-[#f2f1ee] py-3">
+            <div className="hidden md:flex justify-around items-center bg-[#f2f1ee] py-3 sticky top-0 z-50">
 
                 {/* left */}
                 <div className="w-28">
