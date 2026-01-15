@@ -1,5 +1,5 @@
-import Categories from "../components/structure/Categories";
 import Hero from "../components/structure/Hero/Hero";
+import Categories from "../components/structure/Categories";
 import Recipes from "../components/structure/Recipes";
 
 const HomePage = () => {
