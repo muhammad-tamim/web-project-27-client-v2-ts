@@ -8,7 +8,7 @@ import category5 from '../../assets/images/desserts.jpg'
 
 const Categories = () => {
     return (
-        <div className='max-w-7xl border mx-auto space-y-20'>
+        <div className='max-w-7xl mx-auto space-y-20'>
             <h2 className='text-3xl md:text-5xl text-center font-semibold'>Recipe Categories</h2>
             <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-items-center space-y-10'>
                 <Link to={'/recipe-category/:id'}>
