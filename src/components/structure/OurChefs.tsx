@@ -63,129 +63,130 @@ const chefs = [
 
 const OurChefs = () => {
     return (
-        <div className="max-w-7xl mx-auto">
-            <h2 className='text-3xl md:text-5xl text-center font-semibold mb-20'>Top Chef's</h2>
+        <div className="bg-gray-50 py-10">
+            <div className="max-w-7xl mx-auto ">
+                <h2 className='text-3xl md:text-5xl text-center font-semibold mb-20'>Top Chef's</h2>
 
-            {/* for large screens */}
-            <div className="hidden lg:flex">
-                <Swiper
-                    slidesPerView={4}
-                    spaceBetween={20}
-                    loop={true}
-                    autoplay={{ delay: 2500, disableOnInteraction: false, }}
-                    modules={[Pagination, Autoplay]}>
-                    {chefs.map((item) => (
-                        <SwiperSlide key={item.id}>
-                            <div className="max-w-xs p-6 shadow-md rounded-xl sm:px-12">
-                                <img src={item.image} alt="" className="w-32 h-32 mx-auto rounded-full aspect-square" />
-                                <div className="space-y-4 text-center ">
-                                    <div className="my-2 space-y-1">
-                                        <h2 className="text-xl font-semibold sm:text-2xl">{item.name}</h2>
-                                        <p className="px-5 text-xs sm:text-base">{item.title}</p>
-                                        <p className="px-5 text-xs sm:text-base">{item.company}</p>
-                                    </div>
-                                    <div className="flex justify-center pt-2 space-x-4 align-center">
-                                        <Link to={'#'} className="p-2 rounded-md">
-                                            <FaGithub></FaGithub>
-                                        </Link>
-                                        <Link to={'#'} className="p-2 rounded-md">
-                                            <FaLinkedin></FaLinkedin>
-                                        </Link>
-                                        <Link to={'#'} className="p-2 rounded-md">
-                                            <FaTwitter></FaTwitter>
-                                        </Link>
-                                        <Link to={'#'} className="p-2 rounded-md">
-                                            <MdMail />
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                    ))}
-
-                </Swiper>
-            </div>
-
-            {/* for medium screens */}
-            <div className="hidden md:flex lg:hidden">
-                <Swiper
-                    slidesPerView={2}
-                    spaceBetween={20}
-                    loop={true}
-                    autoplay={{ delay: 2500, disableOnInteraction: false, }}
-                    modules={[Pagination, Autoplay]}>
-                    {chefs.map((item) => (
-                        <SwiperSlide key={item.id}>
-                            <div className="max-w-xs mx-auto p-6 shadow-lg rounded-xl sm:px-12">
-                                <img src={item.image} alt="" className="w-32 h-32 mx-auto rounded-full aspect-square" />
-                                <div className="space-y-4 text-center ">
-                                    <div className="my-2 space-y-1">
-                                        <h2 className="text-xl font-semibold sm:text-2xl">{item.name}</h2>
-                                        <p className="px-5 text-xs sm:text-base">{item.title}</p>
-                                        <p className="px-5 text-xs sm:text-base">{item.company}</p>
-                                    </div>
-                                    <div className="flex justify-center pt-2 space-x-4 align-center">
-                                        <Link to={'#'} className="p-2 rounded-md">
-                                            <FaGithub></FaGithub>
-                                        </Link>
-                                        <Link to={'#'} className="p-2 rounded-md">
-                                            <FaLinkedin></FaLinkedin>
-                                        </Link>
-                                        <Link to={'#'} className="p-2 rounded-md">
-                                            <FaTwitter></FaTwitter>
-                                        </Link>
-                                        <Link to={'#'} className="p-2 rounded-md">
-                                            <MdMail />
-                                        </Link>
+                {/* for large screens */}
+                <div className="hidden lg:flex">
+                    <Swiper
+                        slidesPerView={4}
+                        spaceBetween={20}
+                        loop={true}
+                        autoplay={{ delay: 2500, disableOnInteraction: false, }}
+                        modules={[Pagination, Autoplay]}>
+                        {chefs.map((item) => (
+                            <SwiperSlide key={item.id}>
+                                <div className="max-w-xs p-6 shadow-md border border-gray-100 rounded-xl sm:px-12">
+                                    <img src={item.image} alt="" className="w-32 h-32 mx-auto rounded-full aspect-square" />
+                                    <div className="space-y-4 text-center ">
+                                        <div className="my-2 space-y-1">
+                                            <h2 className="text-xl font-semibold sm:text-2xl">{item.name}</h2>
+                                            <p className="px-5 text-xs sm:text-base">{item.title}</p>
+                                            <p className="px-5 text-xs sm:text-base">{item.company}</p>
+                                        </div>
+                                        <div className="flex justify-center pt-2 space-x-4 align-center">
+                                            <Link to={'#'} className="p-2 rounded-md">
+                                                <FaGithub></FaGithub>
+                                            </Link>
+                                            <Link to={'#'} className="p-2 rounded-md">
+                                                <FaLinkedin></FaLinkedin>
+                                            </Link>
+                                            <Link to={'#'} className="p-2 rounded-md">
+                                                <FaTwitter></FaTwitter>
+                                            </Link>
+                                            <Link to={'#'} className="p-2 rounded-md">
+                                                <MdMail />
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </SwiperSlide>
-                    ))}
+                            </SwiperSlide>
+                        ))}
 
-                </Swiper>
-            </div>
+                    </Swiper>
+                </div>
 
-            {/* for small screens */}
-            <div className="md:hidden">
-                <Swiper
-                    slidesPerView={1}
-                    spaceBetween={20}
-                    loop={true}
-                    autoplay={{ delay: 2500, disableOnInteraction: false, }}
-                    modules={[Pagination, Autoplay]}>
-                    {chefs.map((item) => (
-                        <SwiperSlide key={item.id}>
-                            <div className="max-w-xs mx-auto p-6 shadow-lg rounded-xl sm:px-12">
-                                <img src={item.image} alt="" className="w-32 h-32 mx-auto rounded-full aspect-square" />
-                                <div className="space-y-4 text-center ">
-                                    <div className="my-2 space-y-1">
-                                        <h2 className="text-xl font-semibold sm:text-2xl">{item.name}</h2>
-                                        <p className="px-5 text-xs sm:text-base">{item.title}</p>
-                                        <p className="px-5 text-xs sm:text-base">{item.company}</p>
-                                    </div>
-                                    <div className="flex justify-center pt-2 space-x-4 align-center">
-                                        <Link to={'#'} className="p-2 rounded-md">
-                                            <FaGithub></FaGithub>
-                                        </Link>
-                                        <Link to={'#'} className="p-2 rounded-md">
-                                            <FaLinkedin></FaLinkedin>
-                                        </Link>
-                                        <Link to={'#'} className="p-2 rounded-md">
-                                            <FaTwitter></FaTwitter>
-                                        </Link>
-                                        <Link to={'#'} className="p-2 rounded-md">
-                                            <MdMail />
-                                        </Link>
+                {/* for medium screens */}
+                <div className="hidden md:flex lg:hidden">
+                    <Swiper
+                        slidesPerView={2}
+                        spaceBetween={20}
+                        loop={true}
+                        autoplay={{ delay: 2500, disableOnInteraction: false, }}
+                        modules={[Pagination, Autoplay]}>
+                        {chefs.map((item) => (
+                            <SwiperSlide key={item.id}>
+                                <div className="max-w-xs mx-auto p-6 shadow-lg rounded-xl sm:px-12">
+                                    <img src={item.image} alt="" className="w-32 h-32 mx-auto rounded-full aspect-square" />
+                                    <div className="space-y-4 text-center ">
+                                        <div className="my-2 space-y-1">
+                                            <h2 className="text-xl font-semibold sm:text-2xl">{item.name}</h2>
+                                            <p className="px-5 text-xs sm:text-base">{item.title}</p>
+                                            <p className="px-5 text-xs sm:text-base">{item.company}</p>
+                                        </div>
+                                        <div className="flex justify-center pt-2 space-x-4 align-center">
+                                            <Link to={'#'} className="p-2 rounded-md">
+                                                <FaGithub></FaGithub>
+                                            </Link>
+                                            <Link to={'#'} className="p-2 rounded-md">
+                                                <FaLinkedin></FaLinkedin>
+                                            </Link>
+                                            <Link to={'#'} className="p-2 rounded-md">
+                                                <FaTwitter></FaTwitter>
+                                            </Link>
+                                            <Link to={'#'} className="p-2 rounded-md">
+                                                <MdMail />
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </SwiperSlide>
-                    ))}
+                            </SwiperSlide>
+                        ))}
 
-                </Swiper>
+                    </Swiper>
+                </div>
+
+                {/* for small screens */}
+                <div className="md:hidden">
+                    <Swiper
+                        slidesPerView={1}
+                        spaceBetween={20}
+                        loop={true}
+                        autoplay={{ delay: 2500, disableOnInteraction: false, }}
+                        modules={[Pagination, Autoplay]}>
+                        {chefs.map((item) => (
+                            <SwiperSlide key={item.id}>
+                                <div className="max-w-xs mx-auto p-6 shadow-lg rounded-xl sm:px-12">
+                                    <img src={item.image} alt="" className="w-32 h-32 mx-auto rounded-full aspect-square" />
+                                    <div className="space-y-4 text-center ">
+                                        <div className="my-2 space-y-1">
+                                            <h2 className="text-xl font-semibold sm:text-2xl">{item.name}</h2>
+                                            <p className="px-5 text-xs sm:text-base">{item.title}</p>
+                                            <p className="px-5 text-xs sm:text-base">{item.company}</p>
+                                        </div>
+                                        <div className="flex justify-center pt-2 space-x-4 align-center">
+                                            <Link to={'#'} className="p-2 rounded-md">
+                                                <FaGithub></FaGithub>
+                                            </Link>
+                                            <Link to={'#'} className="p-2 rounded-md">
+                                                <FaLinkedin></FaLinkedin>
+                                            </Link>
+                                            <Link to={'#'} className="p-2 rounded-md">
+                                                <FaTwitter></FaTwitter>
+                                            </Link>
+                                            <Link to={'#'} className="p-2 rounded-md">
+                                                <MdMail />
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+
+                    </Swiper>
+                </div>
             </div>
-
         </div>
     );
 };

@@ -42,7 +42,7 @@ const ContactUs = () => {
                     </form>
                 </div>
 
-                <div className="relative lg:h-screen">
+                <div className="hidden lg:flex relative lg:h-screen">
                     <img src={chefs} alt="app-img"
                         className="w-full h-full  lg:absolute lg:right-0 lg:top-0 lg:bottom-0" />
                 </div>

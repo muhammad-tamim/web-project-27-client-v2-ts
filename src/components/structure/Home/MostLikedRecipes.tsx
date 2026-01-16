@@ -17,51 +17,53 @@ const slideItems = [
 
 const MostLikedRecipes = () => {
     return (
-        <div className='max-w-7xl mx-auto'>
-            <h2 className='text-3xl md:text-5xl text-center font-semibold mb-20'>Most Loved Recipes</h2>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-10 px-5 xl:px-0'>
+        <div className='bg-gray-50 py-10'>
+            <div className='max-w-7xl mx-auto'>
+                <h2 className='text-3xl md:text-5xl text-center font-semibold mb-20'>Most Loved Recipes</h2>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-10 px-5 xl:px-0'>
 
-                {slideItems.map((item) => <div className="card bg-base-100 shadow-sm">
-                    <figure>
-                        <img
-                            src={item.image}
-                            alt="Shoes" />
-                    </figure>
-                    <div className="card-body">
-                        <h2 className="text-center font-semibold text-2xl">
-                            Tart Pecan Pie
-                        </h2>
+                    {slideItems.map((item) => <div className="card bg-base-100 shadow-sm">
+                        <figure>
+                            <img
+                                src={item.image}
+                                alt="Shoes" />
+                        </figure>
+                        <div className="card-body">
+                            <h2 className="text-center font-semibold text-2xl">
+                                Tart Pecan Pie
+                            </h2>
 
-                        <p>A handful of simple ingredients typify the fresh, vibrant flavors of Greek cooking.</p>
+                            <p>A handful of simple ingredients typify the fresh, vibrant flavors of Greek cooking.</p>
 
-                        <div className='flex justify-between'>
-                            <p >Cuisine: India</p>
-                            <div className='flex gap-1 items-center'>
-                                <span><FaHeart></FaHeart></span>
-                                <span>13 likes</span>
-                            </div>
-                        </div>
-
-
-                        <div className='flex gap-1 items-center'>
-                            <div>
-                                <div className="avatar">
-                                    <div className="w-8 rounded-full">
-                                        <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
-                                    </div>
+                            <div className='flex justify-between'>
+                                <p >Cuisine: India</p>
+                                <div className='flex gap-1 items-center'>
+                                    <span><FaHeart></FaHeart></span>
+                                    <span>13 likes</span>
                                 </div>
                             </div>
 
-                            <p>By {item.author}</p>
+
+                            <div className='flex gap-1 items-center'>
+                                <div>
+                                    <div className="avatar">
+                                        <div className="w-8 rounded-full">
+                                            <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p>By {item.author}</p>
+                            </div>
+                            <Link to={'/recipe-details/:id'}><button className='w-full btn text-white bg-[#f89223]'>View Details</button></Link>
                         </div>
-                        <Link to={'/recipe-details/:id'}><button className='w-full btn text-white bg-[#f89223]'>View Details</button></Link>
-                    </div>
-                </div>)}
+                    </div>)}
 
+                </div >
+
+                <Link to={'/all-recipes'}><button className='mx-auto flex btn btn-lg text-white bg-[#f89223] mt-20'>View All Recipes</button></Link>
             </div >
-
-            <Link to={'/all-recipes'}><button className='mx-auto flex btn btn-lg text-white bg-[#f89223] mt-20'>View All Recipes</button></Link>
-        </div >
+        </div>
     );
 };
 

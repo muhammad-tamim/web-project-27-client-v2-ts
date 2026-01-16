@@ -8,7 +8,7 @@ const Navbar = () => {
     return (
         <>
             {/* for large screens */}
-            <div className="hidden md:flex justify-around items-center bg-[#f2f1ee] py-3 sticky top-0 z-50">
+            <div className="hidden md:flex justify-around items-center bg-gray-50 py-3 sticky top-0 z-50">
 
                 {/* left */}
                 <div className="w-28">
@@ -53,7 +53,7 @@ const Navbar = () => {
             </div>
 
             {/* for small screens */}
-            <div className="md:hidden flex justify-between bg-[#f2f1ee] py-3 px-4">
+            <div className="md:hidden flex justify-between bg-gray-50 py-3 px-4">
 
                 {/* left side */}
                 <div className="w-28">
