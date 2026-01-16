@@ -38,11 +38,11 @@ const Hero = () => {
                                 <div className="absolute inset-0 bg-black/60"></div>
 
                                 <div className='absolute inset-0 text-center flex flex-col justify-center items-center gap-5'>
-                                    <div className='flex gap-1 items-center'>
+                                    {/* <div className='flex gap-1 items-center'>
                                         {[...Array(item.rating)].map((_, index) => (
                                             <FaStar key={index} className='text-[#f89223]' />
                                         ))}
-                                    </div>
+                                    </div> */}
                                     <h1 className='text-white font-bold text-5xl'>{item.title}</h1>
                                     <p className='text-white max-w-md'>{item.description}</p>
                                     <Link to={'/recipe-details/:id'}><button className='btn bg-[#f89223] text-white'>View Details</button></Link>

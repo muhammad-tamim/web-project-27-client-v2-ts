@@ -77,7 +77,7 @@ const OurChefs = () => {
                         modules={[Pagination, Autoplay]}>
                         {chefs.map((item) => (
                             <SwiperSlide key={item.id}>
-                                <div className="max-w-xs p-6 shadow-md border border-gray-100 rounded-xl sm:px-12">
+                                <div className="max-w-xs p-6 shadow-md bg-base-100  rounded-xl sm:px-12">
                                     <img src={item.image} alt="" className="w-32 h-32 mx-auto rounded-full aspect-square" />
                                     <div className="space-y-4 text-center ">
                                         <div className="my-2 space-y-1">
