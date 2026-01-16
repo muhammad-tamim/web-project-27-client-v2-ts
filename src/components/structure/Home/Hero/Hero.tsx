@@ -6,10 +6,10 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './styles.css';
 
-import image1 from '../../../assets/images/baked-chicken-breast.jpg'
-import image2 from '../../../assets/images/chicken-tikka-masala.jpg'
-import image3 from '../../../assets/images/burger.jpg'
-import image4 from '../../../assets/images/raspberry.jpg'
+import image1 from '../../../../assets/images/baked-chicken-breast.jpg'
+import image2 from '../../../../assets/images/chicken-tikka-masala.jpg'
+import image3 from '../../../../assets/images/burger.jpg'
+import image4 from '../../../../assets/images/raspberry.jpg'
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router';
 

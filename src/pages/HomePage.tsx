@@ -1,14 +1,14 @@
-import Hero from "../components/structure/Hero/Hero";
-import Categories from "../components/structure/Categories";
-import Recipes from "../components/structure/Recipes";
+import Categories from "../components/structure/Home/Categories";
+import Hero from "../components/structure/Home/Hero/Hero";
+import MostLikedRecipes from "../components/structure/Home/MostLikedRecipes";
 
 const HomePage = () => {
     return (
         <div>
-            <Hero></Hero>
-            <div className="space-y-20 mt-20 mb-20">
+            <div className="space-y-20 mb-20">
+                <Hero></Hero>
                 <Categories></Categories>
-                <div className="px-5"><Recipes></Recipes></div>
+                <MostLikedRecipes></MostLikedRecipes>
             </div>
         </div>
     );

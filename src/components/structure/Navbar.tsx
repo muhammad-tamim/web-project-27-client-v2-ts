@@ -1,7 +1,7 @@
-import logo from "../../../assets/images/logo.png"
+import logo from "../../assets/images/logo.png"
 import { Link, NavLink } from "react-router";
-import { navItems } from "../../../utils/navItems";
 import { CiMenuFries } from "react-icons/ci";
+import { navItems } from "../../utils/navItems";
 
 const Navbar = () => {
 

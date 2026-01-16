@@ -1,9 +1,9 @@
 import React from 'react';
-import image1 from '../../assets/images/baked-chicken-breast.jpg'
-import image2 from '../../assets/images/chicken-tikka-masala.jpg'
-import image3 from '../../assets/images/burger.jpg'
-import image4 from '../../assets/images/raspberry.jpg'
-import { FaHeart, FaStar } from 'react-icons/fa';
+import image1 from '../../../assets/images/baked-chicken-breast.jpg'
+import image2 from '../../../assets/images/chicken-tikka-masala.jpg'
+import image3 from '../../../assets/images/burger.jpg'
+import image4 from '../../../assets/images/raspberry.jpg'
+import { FaHeart } from 'react-icons/fa';
 import { Link } from 'react-router';
 
 const slideItems = [
@@ -15,11 +15,11 @@ const slideItems = [
     { id: 6, title: 'Raspberry Tartlet', image: image4, rating: 3, description: 'A handful Lorem ipsum dolor sit amet. of simple ingredients typify the fresh, vibrant flavors of Greek cooking.', author: 'Md. Tamim', authorImage: "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" },
 ]
 
-const Recipes = () => {
+const MostLikedRecipes = () => {
     return (
-        <div className='max-w-7xl mx-auto space-y-20'>
-            <h2 className='text-3xl md:text-5xl text-center font-semibold'>Most Loved Recipes</h2>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-10'>
+        <div className='max-w-7xl mx-auto'>
+            <h2 className='text-3xl md:text-5xl text-center font-semibold mb-20'>Most Loved Recipes</h2>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-10 px-5 xl:px-0'>
 
                 {slideItems.map((item) => <div className="card bg-base-100 shadow-sm">
                     <figure>
@@ -60,9 +60,9 @@ const Recipes = () => {
 
             </div >
 
-            <Link to={'/all-recipes'}><button className='mx-auto flex border btn btn-xl text-white bg-[#f89223]'>view all Recipes</button></Link>
+            <Link to={'/all-recipes'}><button className='mx-auto flex btn btn-lg text-white bg-[#f89223] mt-20'>View All Recipes</button></Link>
         </div >
     );
 };
 
-export default Recipes;
+export default MostLikedRecipes;
