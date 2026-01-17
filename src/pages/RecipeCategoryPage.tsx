@@ -17,7 +17,7 @@ const slideItems = [
     { id: 6, title: 'Raspberry Tartlet', image: image4, rating: 3, description: 'A handful Lorem ipsum dolor sit amet. of simple ingredients typify the fresh, vibrant flavors of Greek cooking.', author: 'Md. Tamim', authorImage: "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" },
 ]
 
-const RecipeCategory = () => {
+const RecipeCategoryPage = () => {
 
     const { category } = useParams();
     return (
@@ -39,4 +39,4 @@ const RecipeCategory = () => {
     );
 };
 
-export default RecipeCategory;
+export default RecipeCategoryPage;
