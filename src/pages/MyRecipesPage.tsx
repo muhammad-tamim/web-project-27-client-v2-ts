@@ -6,7 +6,6 @@ import image3 from '../assets/images/burger.jpg'
 import image4 from '../assets/images/raspberry.jpg'
 import PagesBanner from '../components/ui/PagesBanner'
 import Cards from '../components/ui/Cards'
-import { useParams } from 'react-router'
 
 
 const slideItems = [
