@@ -10,6 +10,7 @@ import AllRecipesPage from "../pages/AllRecipesPage";
 import RecipeDetailsPage from "../pages/RecipeDetailsPage";
 import RecipeCuisinePage from "../pages/RecipeCuisinePage";
 import RecipeCategoryPage from "../pages/RecipeCategoryPage";
+import NotFoundPage from "../pages/NotFoundPage";
 
 
 export const routes = createBrowserRouter([
@@ -56,6 +57,10 @@ export const routes = createBrowserRouter([
       {
         path: '/recipe-cuisine/:country',
         Component: RecipeCuisinePage
+      },
+      {
+        path: '/*',
+        Component: NotFoundPage
       }
     ]
   }
