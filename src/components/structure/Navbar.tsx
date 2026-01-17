@@ -9,7 +9,7 @@ const Navbar = () => {
     return (
         <>
             {/* for large screens */}
-            <div className="hidden md:flex justify-around items-center bg-gray-50 py-3 sticky top-0 z-50">
+            <div className="hidden lg:flex justify-around items-center bg-gray-50 py-3 sticky top-0 z-50">
 
                 {/* left */}
                 <div className="w-28">
@@ -17,7 +17,7 @@ const Navbar = () => {
                 </div>
 
                 {/* middle */}
-                <div className="space-x-3 lg:space-x-6">
+                <div className="space-x-3 lg:space-x-4 xl:space-x-6">
                     {navItems.map((item) =>
                         item.children ? (
                             <details key={item.id} className="dropdown dropdown-center">
@@ -41,8 +41,8 @@ const Navbar = () => {
                                 to={item.to}
                                 className={({ isActive }) =>
                                     isActive
-                                        ? "text-black font-medium lg:text-xl"
-                                        : "text-[#8e9092] lg:text-lg"
+                                        ? "text-black font-medium lg:text-lg xl:text-xl"
+                                        : "text-[#8e9092] lg:text-base xl:text-lg"
                                 }
                             >
                                 {item.label}
@@ -53,11 +53,11 @@ const Navbar = () => {
                 </div>
 
                 {/* right */}
-                <div className="flex items-center gap-3 lg:gap-6">
+                <div className="flex items-center gap-2 lg:gap-4">
 
                     {/* auth */}
-                    <NavLink to={'/sign-in'} className={({ isActive }) => isActive ? 'text-black font-medium lg:text-xl' : 'text-[#8e9092] lg:text-lg'}>SignIn</NavLink>
-                    <NavLink to={'/sign-up'} className={({ isActive }) => isActive ? 'text-black font-medium lg:text-xl' : 'text-[#8e9092] lg:text-lg'}>SignUp</NavLink>
+                    <NavLink to={'/sign-in'} className={({ isActive }) => isActive ? 'text-black font-medium lg:text-lg xl:text-xl' : 'text-[#8e9092] lg:text-base xl:text-xl'}>SignIn</NavLink>
+                    <NavLink to={'/sign-up'} className={({ isActive }) => isActive ? 'text-black font-medium lg:text-lg xl:text-xl' : 'text-[#8e9092] lg:text-base xl:text-xl'}>SignUp</NavLink>
 
                     {/* profile */}
                     <div className="dropdown dropdown-end ">
@@ -82,7 +82,7 @@ const Navbar = () => {
             </div>
 
             {/* for small screens */}
-            <div className="md:hidden flex justify-between bg-gray-50 py-3 px-4">
+            <div className="lg:hidden flex justify-between bg-gray-50 py-3 px-4">
 
                 {/* left side */}
                 <div className="w-28">
@@ -124,7 +124,7 @@ const Navbar = () => {
                         </div>
                         <div className="drawer-side">
                             <label htmlFor="my-drawer-1" aria-label="close sidebar" className="drawer-overlay"></label>
-                            <ul className="menu bg-base-200 min-h-full w-40 p-4">
+                            <ul className="menu bg-base-200 min-h-full w-40 md:w-96 p-4">
                                 {/* Sidebar content here */}
                                 {navItems.map((item) =>
                                     item.children ? (
