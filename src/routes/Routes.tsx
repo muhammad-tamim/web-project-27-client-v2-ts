@@ -8,7 +8,8 @@ import AddRecipesPage from "../pages/AddRecipesPage";
 import MyRecipesPage from "../pages/MyRecipesPage";
 import AllRecipesPage from "../pages/AllRecipesPage";
 import RecipeDetailsPage from "../pages/RecipeDetailsPage";
-import RecipeCategory from "../pages/RecipeCategory";
+import RecipeCuisinePage from "../pages/RecipeCuisinePage";
+import RecipeCategoryPage from "../pages/RecipeCategoryPage";
 
 
 export const routes = createBrowserRouter([
@@ -50,7 +51,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: '/recipe-category/:category',
-        Component: RecipeCategory
+        Component: RecipeCategoryPage
+      },
+      {
+        path: '/recipe-cuisine/:country',
+        Component: RecipeCuisinePage
       }
     ]
   }
