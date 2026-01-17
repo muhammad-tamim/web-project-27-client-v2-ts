@@ -6,6 +6,7 @@ import image1 from '../assets/images/baked-chicken-breast.jpg'
 import image2 from '../assets/images/chicken-tikka-masala.jpg'
 import image3 from '../assets/images/burger.jpg'
 import image4 from '../assets/images/raspberry.jpg'
+import bg from '../assets/images/raspberry.jpg'
 
 
 const slideItems = [
@@ -22,7 +23,7 @@ const RecipeCategoryPage = () => {
     const { category } = useParams();
     return (
         <div>
-            <PagesBanner title={category!}></PagesBanner>
+            <PagesBanner title={category!} bg={bg}></PagesBanner>
             <div className='py-10 lg:py-20'>
                 <div className='max-w-7xl mx-auto'>
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-10 px-5 xl:px-0'>

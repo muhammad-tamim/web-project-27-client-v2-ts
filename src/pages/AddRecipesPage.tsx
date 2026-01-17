@@ -1,9 +1,11 @@
 import PagesBanner from '../components/ui/PagesBanner';
 
+import bg from '../assets/images/baked-chicken-breast.jpg'
+
 const AddRecipesPage = () => {
     return (
         <div>
-            <PagesBanner title={"Submit Recipe"}></PagesBanner>
+            <PagesBanner title={"Submit Recipe"} bg={bg}></PagesBanner>
             <div className='py-10 lg:py-20 px-5 lg:px-0'>
                 <div className='max-w-4xl mx-auto space-y-5'>
 

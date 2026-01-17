@@ -52,7 +52,7 @@ const RecipeDetailsPage = () => {
                     <div className='bg-[#f4f3f0] rounded-md px-8 py-4 flex flex-wrap justify-between items-center'>
                         <div className="flex items-center gap-3">
                             <div>
-                                <MdAccessTime className="size-16 text-gray-400" />
+                                <MdAccessTime className="size-14 text-gray-400" />
                             </div>
                             <div className="space-y-1">
                                 <h3 className="font-medium text-sm">Prep Time</h3>
@@ -61,7 +61,7 @@ const RecipeDetailsPage = () => {
                         </div>
                         <div className="flex items-center gap-3">
                             <div>
-                                <MdAccessTime className="size-16 text-gray-400" />
+                                <MdAccessTime className="size-14 text-gray-400" />
                             </div>
                             <div className="space-y-1">
                                 <h3 className="font-medium text-sm">Cook Time</h3>
@@ -70,7 +70,7 @@ const RecipeDetailsPage = () => {
                         </div>
                         <div className="flex items-center gap-3">
                             <div>
-                                <MdAccessTime className="size-16 text-gray-400" />
+                                <MdAccessTime className="size-14 text-gray-400" />
                             </div>
                             <div className="space-y-1">
                                 <h3 className="font-medium text-sm">Total Time</h3>
