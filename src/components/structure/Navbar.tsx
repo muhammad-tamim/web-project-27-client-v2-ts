@@ -2,6 +2,7 @@ import logo from "../../assets/images/logo.png"
 import { Link, NavLink } from "react-router";
 import { CiMenuFries } from "react-icons/ci";
 import { navItems } from "../../utils/navItems";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Navbar = () => {
 
@@ -17,10 +18,38 @@ const Navbar = () => {
 
                 {/* middle */}
                 <div className="space-x-3 lg:space-x-6">
-                    {navItems.map((item) => <NavLink key={item.id} to={item.to}
-                        className={({ isActive }) => isActive ? 'text-black font-medium lg:text-xl' : 'text-[#8e9092] lg:text-lg'}>
-                        {item.label}
-                    </NavLink>)}
+                    {navItems.map((item) =>
+                        item.children ? (
+                            <details key={item.id} className="dropdown dropdown-center">
+                                <summary className="list-none cursor-pointer flex items-center gap-1 text-[#8e9092] lg:text-lg">
+                                    {item.label}
+                                    <IoIosArrowDown />
+                                </summary>
+
+                                <ul className="menu mt-4 dropdown-content bg-base-100 rounded-box z-10 w-40 p-2 shadow">
+                                    {item.children.map((child) => (
+                                        <li key={child.id}>
+                                            <NavLink to={child.to} className={({ isActive }) => isActive ? "font-medium text-black" : "text-gray-600"
+                                            }>{child.label}</NavLink>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </details>
+                        ) : (
+                            <NavLink
+                                key={item.id}
+                                to={item.to}
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "text-black font-medium lg:text-xl"
+                                        : "text-[#8e9092] lg:text-lg"
+                                }
+                            >
+                                {item.label}
+                            </NavLink>
+                        )
+                    )}
+
                 </div>
 
                 {/* right */}
@@ -97,12 +126,42 @@ const Navbar = () => {
                             <label htmlFor="my-drawer-1" aria-label="close sidebar" className="drawer-overlay"></label>
                             <ul className="menu bg-base-200 min-h-full w-40 p-4">
                                 {/* Sidebar content here */}
-                                <li>
-                                    {navItems.map((item) => <NavLink key={item.id} to={item.to}
-                                        className={({ isActive }) => isActive ? 'text-black font-medium' : 'text-[#8e9092]'}>
-                                        {item.label}
-                                    </NavLink>)}
-                                </li>
+                                {navItems.map((item) =>
+                                    item.children ? (
+                                        <li key={item.id}>
+                                            <span className="font-medium text-gray-700 flex items-center gap-1">
+                                                {item.label}
+                                                <IoIosArrowDown size={14} />
+                                            </span>
+
+                                            <ul className="pl-4 mt-1 space-y-1">
+                                                {item.children.map((child) => (
+                                                    <li key={child.id}>
+                                                        <NavLink
+                                                            to={child.to}
+                                                            className={({ isActive }) =>
+                                                                isActive ? "text-black font-medium" : "text-[#8e9092]"
+                                                            }
+                                                        >
+                                                            {child.label}
+                                                        </NavLink>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </li>
+                                    ) : (
+                                        <li key={item.id}>
+                                            <NavLink
+                                                to={item.to}
+                                                className={({ isActive }) =>
+                                                    isActive ? "text-black font-medium" : "text-[#8e9092]"
+                                                }
+                                            >
+                                                {item.label}
+                                            </NavLink>
+                                        </li>
+                                    )
+                                )}
                                 <li>
                                     <NavLink to={'/sign-in'} className={({ isActive }) => isActive ? 'text-black font-medium' : 'text-[#8e9092]'}>SignIn</NavLink>
                                     <NavLink to={'/sign-up'} className={({ isActive }) => isActive ? 'text-black font-medium' : 'text-[#8e9092]'}>SignUp</NavLink>
