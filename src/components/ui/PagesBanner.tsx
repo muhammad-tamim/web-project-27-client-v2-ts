@@ -1,11 +1,12 @@
-import bg from '../../assets/images/Recipes-background1.jpg'
+
 
 interface PagesBannerProps {
     title: string;
+    bg: string
 }
 
 
-const PagesBanner = ({ title }: PagesBannerProps) => {
+const PagesBanner = ({ title, bg }: PagesBannerProps) => {
     return (
         <div className='relative'>
             <img src={bg} className='object-cover w-full lg:h-52 h-40' alt="" />

@@ -46,7 +46,7 @@ export const routes = createBrowserRouter([
         Component: ProfilePage
       },
       {
-        path: '/recipe-details/:id',
+        path: '/recipe-details/:title',
         Component: RecipeDetailsPage
       },
       {

@@ -43,7 +43,7 @@ const Cards = ({ item }: CardsProps) => {
                     </div>
                 </div>
 
-                <Link to={'/recipe-details/:id'}><button className='w-full btn text-white bg-[#f89223]'>View Details</button></Link>
+                <Link to={'/recipe-details/Tart Pecan Pie'}><button className='w-full btn text-white bg-[#f89223]'>View Details</button></Link>
             </div>
         </div>
     );
