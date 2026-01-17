@@ -18,19 +18,19 @@ const Categories = () => {
                     </Link>
                     <Link to={'/recipe-category/:beef'}>
                         <img src={category2} alt="image" className='rounded-full w-48 hover:rotate-12 transition-transform duration-500' />
-                        <p className='text-center text-lg font-medium mt-5'>Appetizers</p>
+                        <p className='text-center text-lg font-medium mt-5'>Beef</p>
                     </Link>
                     <Link to={'/recipe-category/:baked'}>
                         <img src={category3} alt="image" className='rounded-full w-48 hover:rotate-12 transition-transform duration-500' />
-                        <p className='text-center text-lg font-medium mt-5'>Appetizers</p>
+                        <p className='text-center text-lg font-medium mt-5'>Baked</p>
                     </Link>
                     <Link to={'/recipe-category/:vegetables'}>
                         <img src={category4} alt="image" className='rounded-full w-48 hover:rotate-12 transition-transform duration-500' />
-                        <p className='text-center text-lg font-medium mt-5'>Appetizers</p>
+                        <p className='text-center text-lg font-medium mt-5'>Vegetables</p>
                     </Link>
                     <Link to={'/recipe-category/:desserts'}>
                         <img src={category5} alt="image" className='rounded-full w-48 hover:rotate-12 transition-transform duration-500' />
-                        <p className='text-center text-lg font-medium mt-5'>Appetizers</p>
+                        <p className='text-center text-lg font-medium mt-5'>Desserts</p>
                     </Link>
                 </div >
             </div >
