@@ -66,15 +66,11 @@ const Navbar = () => {
                                 <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
                             </div>
                         </div>
-                        <ul
-                            tabIndex="-1"
-                            className="menu menu-sm dropdown-content mt-3 w-52 p-2 shadow bg-[#f2f1ee] opacity-80">
-                            <li>
-                                <Link to={'/profile'} className="justify-between">
-                                    Setting
-                                </Link>
-                            </li>
-                            <li><a className="btn">Logout</a></li>
+                        <ul tabIndex="-1" className="space-y-3 menu mt-3 dropdown-content bg-base-100 rounded-box z-10 w-40 p-2 shadow rounded-none border-[#f89223] border-t-2">
+                            <li><Link to={'/profile'} className="btn">
+                                Setting
+                            </Link></li>
+                            <li><a className="btn btn-error">Logout</a></li>
                         </ul>
                     </div>
                 </div>
