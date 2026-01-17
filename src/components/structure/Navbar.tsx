@@ -20,13 +20,13 @@ const Navbar = () => {
                 <div className="space-x-3 lg:space-x-4 xl:space-x-6">
                     {navItems.map((item) =>
                         item.children ? (
-                            <details key={item.id} className="dropdown dropdown-center">
-                                <summary className="list-none cursor-pointer flex items-center gap-1 text-[#8e9092] lg:text-lg">
+                            <div key={item.id} className="dropdown dropdown-center ">
+                                <div tabIndex={0} role="button" className="list-none cursor-pointer flex items-center gap-1 text-[#8e9092] lg:text-lg">
                                     {item.label}
                                     <IoIosArrowDown />
-                                </summary>
+                                </div>
 
-                                <ul className="menu mt-4 dropdown-content bg-base-100 rounded-box z-10 w-40 p-2 shadow">
+                                <ul tabIndex="-1" className="menu mt-4 dropdown-content bg-base-100 rounded-box z-10 w-40 p-2 shadow rounded-none border-[#f89223] border-t-2">
                                     {item.children.map((child) => (
                                         <li key={child.id}>
                                             <NavLink to={child.to} className={({ isActive }) => isActive ? "font-medium text-black" : "text-gray-600"
@@ -34,15 +34,15 @@ const Navbar = () => {
                                         </li>
                                     ))}
                                 </ul>
-                            </details>
+                            </div>
                         ) : (
                             <NavLink
                                 key={item.id}
                                 to={item.to}
                                 className={({ isActive }) =>
                                     isActive
-                                        ? "text-black font-medium lg:text-lg xl:text-xl"
-                                        : "text-[#8e9092] lg:text-base xl:text-lg"
+                                        ? "text-black font-medium lg:text-lg"
+                                        : "text-[#8e9092] lg:text-base"
                                 }
                             >
                                 {item.label}
@@ -56,8 +56,8 @@ const Navbar = () => {
                 <div className="flex items-center gap-2 lg:gap-4">
 
                     {/* auth */}
-                    <NavLink to={'/sign-in'} className={({ isActive }) => isActive ? 'text-black font-medium lg:text-lg xl:text-xl' : 'text-[#8e9092] lg:text-base xl:text-xl'}>SignIn</NavLink>
-                    <NavLink to={'/sign-up'} className={({ isActive }) => isActive ? 'text-black font-medium lg:text-lg xl:text-xl' : 'text-[#8e9092] lg:text-base xl:text-xl'}>SignUp</NavLink>
+                    <NavLink to={'/sign-in'} className={({ isActive }) => isActive ? 'text-black font-medium lg:text-lg ' : 'text-[#8e9092] lg:text-base '}>SignIn</NavLink>
+                    <NavLink to={'/sign-up'} className={({ isActive }) => isActive ? 'text-black font-medium lg:text-lg ' : 'text-[#8e9092] lg:text-base '}>SignUp</NavLink>
 
                     {/* profile */}
                     <div className="dropdown dropdown-end ">
