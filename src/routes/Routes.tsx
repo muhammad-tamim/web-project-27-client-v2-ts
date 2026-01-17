@@ -49,7 +49,7 @@ export const routes = createBrowserRouter([
         Component: RecipeDetailsPage
       },
       {
-        path: '/recipe-category/:id',
+        path: '/recipe-category/:category',
         Component: RecipeCategory
       }
     ]

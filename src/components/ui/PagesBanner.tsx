@@ -11,7 +11,7 @@ const PagesBanner = ({ title }: PagesBannerProps) => {
             <img src={bg} className='object-cover w-full lg:h-52 h-40' alt="" />
             <div className="absolute inset-0 bg-black/60"></div>
             <h2 className="absolute inset-0 flex items-center justify-center text-3xl md:text-5xl font-semibold text-white">
-                {title}
+                {title.toUpperCase()}
             </h2>
         </div>
     );
