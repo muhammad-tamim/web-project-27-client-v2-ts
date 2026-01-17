@@ -183,6 +183,48 @@ export default Hero;
 }
 ```
 
+5. How to make todo using tailwind: 
+
+![image](./src/assets/gifs/todo.gif)
+
+- peer → peer marks an element as a reference
+- peer-checked:line-through → When the peer checkbox is checked, apply these styles
+- line-through → middle underline
+
+```jsx
+<fieldset className="fieldset bg-base-100 border-base-300 rounded-box w-full border p-4">
+    <legend className="fieldset-legend text-3xl font-medium">Ingredients</legend>
+
+    <label className="label cursor-pointer flex gap-3">
+        <input type="checkbox" className="checkbox peer" />
+        <span className="peer-checked:line-through peer-checked:text-gray-400">
+            1 lb ground beef
+        </span>
+    </label>
+
+    <label className="label cursor-pointer flex gap-3">
+        <input type="checkbox" className="checkbox peer" />
+        <span className="peer-checked:line-through peer-checked:text-gray-400">
+            1 egg
+        </span>
+    </label>
+
+    <label className="label cursor-pointer flex gap-3">
+        <input type="checkbox" className="checkbox peer" />
+        <span className="peer-checked:line-through peer-checked:text-gray-400">
+            2 cups water
+        </span>
+    </label>
+
+    <label className="label cursor-pointer flex gap-3">
+        <input type="checkbox" className="checkbox peer" />
+        <span className="peer-checked:line-through peer-checked:text-gray-400">
+            4 cloves of garlic
+        </span>
+    </label>
+</fieldset>
+```
+
 ## Challenges I faced:
 1. To making the hero slider: 
 here, 
