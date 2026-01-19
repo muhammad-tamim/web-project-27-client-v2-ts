@@ -3,8 +3,24 @@ import { Link, NavLink } from "react-router";
 import { CiMenuFries } from "react-icons/ci";
 import { navItems } from "../../utils/navItems";
 import { IoIosArrowDown } from "react-icons/io";
+import { AuthContext } from "../../contexts/AuthContext";
+import toast from "react-hot-toast";
+import { useContext } from "react";
+import userImage from '../../assets/images/no-user.png'
 
 const Navbar = () => {
+    const authContext = useContext(AuthContext);
+    if (!authContext) return null;
+
+    const { user, signOutUser } = authContext;
+
+
+    const handleSignOut = () => {
+        signOutUser()
+            .then(() => {
+                toast.success("SignOut successful")
+            })
+    }
 
     return (
         <>
@@ -56,21 +72,23 @@ const Navbar = () => {
                 <div className="flex items-center gap-2 lg:gap-4">
 
                     {/* auth */}
-                    <NavLink to={'/sign-in'} className={({ isActive }) => isActive ? 'text-black font-medium lg:text-lg ' : 'text-[#8e9092] lg:text-base '}>SignIn</NavLink>
-                    <NavLink to={'/sign-up'} className={({ isActive }) => isActive ? 'text-black font-medium lg:text-lg ' : 'text-[#8e9092] lg:text-base '}>SignUp</NavLink>
+                    {!user && <>
+                        <NavLink to={'/sign-in'} className={({ isActive }) => isActive ? 'text-black font-medium lg:text-lg ' : 'text-[#8e9092] lg:text-base '}>SignIn</NavLink>
+                        <NavLink to={'/sign-up'} className={({ isActive }) => isActive ? 'text-black font-medium lg:text-lg ' : 'text-[#8e9092] lg:text-base '}>SignUp</NavLink>
+                    </>}
 
                     {/* profile */}
                     <div className="dropdown dropdown-end ">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                <img src={user ? user.photoURL : userImage} />
                             </div>
                         </div>
                         <ul tabIndex="-1" className="space-y-3 menu mt-3 dropdown-content bg-base-100 rounded-box z-10 w-40 p-2 shadow rounded-none border-[#f89223] border-t-2">
                             <li><Link to={'/profile'} className="btn">
                                 Setting
                             </Link></li>
-                            <li><a className="btn btn-error">Logout</a></li>
+                            <li><button onClick={handleSignOut} className="btn btn-error">Logout</button></li>
                         </ul>
                     </div>
                 </div>
@@ -95,7 +113,7 @@ const Navbar = () => {
                         <div className="dropdown dropdown-end">
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">
-                                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                    <img src={user ? user.photoURL : userImage} />
                                 </div>
                             </div>
                             <ul
@@ -106,7 +124,7 @@ const Navbar = () => {
                                         Setting
                                     </Link>
                                 </li>
-                                <li><a className="btn">Logout</a></li>
+                                <li><button onClick={handleSignOut} className="btn btn-error">Logout</button></li>
                             </ul>
                         </div>
                     </div>
@@ -159,8 +177,10 @@ const Navbar = () => {
                                     )
                                 )}
                                 <li>
-                                    <NavLink to={'/sign-in'} className={({ isActive }) => isActive ? 'text-black font-medium' : 'text-[#8e9092]'}>SignIn</NavLink>
-                                    <NavLink to={'/sign-up'} className={({ isActive }) => isActive ? 'text-black font-medium' : 'text-[#8e9092]'}>SignUp</NavLink>
+                                    {!user && <>
+                                        <NavLink to={'/sign-in'} className={({ isActive }) => isActive ? 'text-black font-medium lg:text-lg ' : 'text-[#8e9092] lg:text-base '}>SignIn</NavLink>
+                                        <NavLink to={'/sign-up'} className={({ isActive }) => isActive ? 'text-black font-medium lg:text-lg ' : 'text-[#8e9092] lg:text-base '}>SignUp</NavLink>
+                                    </>}
                                 </li>
                             </ul>
                         </div>
