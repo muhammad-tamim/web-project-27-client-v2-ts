@@ -11,12 +11,14 @@ import RecipeDetailsPage from "../pages/RecipeDetailsPage";
 import RecipeCuisinePage from "../pages/RecipeCuisinePage";
 import RecipeCategoryPage from "../pages/RecipeCategoryPage";
 import NotFoundPage from "../pages/NotFoundPage";
+import ErrorElement from "../components/ui/ErrorElement";
 
 
 export const routes = createBrowserRouter([
   {
     path: '/',
     Component: HomeLayouts,
+    errorElement: <ErrorElement></ErrorElement>,
     children: [
       {
         index: true,
