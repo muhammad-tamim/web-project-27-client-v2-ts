@@ -1,3 +1,4 @@
+import { use } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { IoMdPhotos } from 'react-icons/io';
 import { IoEyeOutline, IoPerson } from 'react-icons/io5';
