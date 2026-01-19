@@ -45,7 +45,7 @@ const Hero = () => {
                                     </div> */}
                                     <h1 className='text-white font-bold text-5xl'>{item.title}</h1>
                                     <p className='text-white max-w-md'>{item.description}</p>
-                                    <Link to={'/recipe-details/:id'}><button className='btn bg-[#f89223] text-white'>View Details</button></Link>
+                                    <Link to={`/recipe-details/${item.title}`}><button className='btn bg-[#f89223] text-white'>View Details</button></Link>
                                 </div>
                             </div>
                         </SwiperSlide>
