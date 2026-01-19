@@ -3,6 +3,7 @@ import ContactUs from "../components/structure/Home/ContactUs";
 import Cuisines from "../components/structure/Home/Cuisines";
 import Hero from "../components/structure/Home/Hero/Hero";
 import MostLikedRecipes from "../components/structure/Home/MostLikedRecipes";
+import NewsLetter from "../components/structure/Home/NewsLetter";
 import OurChefs from "../components/structure/OurChefs";
 
 const HomePage = () => {
@@ -15,6 +16,7 @@ const HomePage = () => {
                 <MostLikedRecipes></MostLikedRecipes>
                 <OurChefs></OurChefs>
                 <ContactUs></ContactUs>
+                <NewsLetter></NewsLetter>
             </div>
         </div>
     );
