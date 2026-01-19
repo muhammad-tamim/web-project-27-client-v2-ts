@@ -2,7 +2,6 @@ import image1 from '../../../assets/images/baked-chicken-breast.jpg'
 import image2 from '../../../assets/images/chicken-tikka-masala.jpg'
 import image3 from '../../../assets/images/burger.jpg'
 import image4 from '../../../assets/images/raspberry.jpg'
-import { FaHeart } from 'react-icons/fa';
 import { Link } from 'react-router';
 import Cards from '../../ui/Cards';
 
@@ -23,7 +22,7 @@ const MostLikedRecipes = () => {
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-10 px-5 xl:px-0'>
 
                     {slideItems.map((item) =>
-                        <Cards item={item}></Cards>
+                        <Cards key={item.id} item={item}></Cards>
                     )}
 
                 </div >
