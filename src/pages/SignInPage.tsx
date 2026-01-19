@@ -4,10 +4,12 @@ import { IoEyeOutline } from 'react-icons/io5';
 import { MdOutlineMailOutline } from 'react-icons/md';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../contexts/AuthContext';
+import toast from 'react-hot-toast';
 
 const SignInPage = () => {
     const navigate = useNavigate();
     const location = useLocation()
+    const from = (location.state as { from?: string })?.from || '/';
     const { signInUser, signInUserWithGoogle, setUser } = useContext(AuthContext)!;
 
     const [loading, setLoading] = useState(false);
@@ -29,12 +31,12 @@ const SignInPage = () => {
 
         signInUser(email, password)
             .then((result) => {
-                console.log('Sign In Successful');
+                toast.success('Sign In Successful');
                 setUser(result.user);
-                navigate(location?.state || '/')
+                navigate(from, { replace: true });
             })
             .catch((err) => {
-                console.error(err);
+                toast.error(err.message);
                 setError(err.message || 'Failed to sign in');
             })
             .finally(() => setLoading(false));
@@ -46,12 +48,12 @@ const SignInPage = () => {
 
         signInUserWithGoogle()
             .then((result) => {
-                console.log('Google Sign In Successful');
+                toast.success('Google Sign In Successful');
                 setUser(result.user);
-                navigate(location?.state || '/')
+                navigate(from, { replace: true })
             })
             .catch((err) => {
-                console.error(err);
+                toast.error(err.message);
                 setError(err.message || 'Failed to sign in with Google');
             })
             .finally(() => setLoading(false));

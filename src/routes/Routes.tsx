@@ -12,6 +12,7 @@ import RecipeCuisinePage from "../pages/RecipeCuisinePage";
 import RecipeCategoryPage from "../pages/RecipeCategoryPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import ErrorElement from "../components/ui/ErrorElement";
+import PrivateRoute from "./PrivateRoute";
 
 
 export const routes = createBrowserRouter([
@@ -30,11 +31,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: '/my-recipes',
-        Component: MyRecipesPage
+        element: <PrivateRoute><MyRecipesPage></MyRecipesPage></PrivateRoute>
       },
       {
         path: '/add-recipes',
-        Component: AddRecipesPage
+        element: <PrivateRoute><AddRecipesPage></AddRecipesPage></PrivateRoute>
       },
       {
         path: '/sign-in',
@@ -46,7 +47,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: '/profile',
-        Component: ProfilePage
+        element: <PrivateRoute><ProfilePage></ProfilePage></PrivateRoute>
       },
       {
         path: '/recipe-details/:title',
