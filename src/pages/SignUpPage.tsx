@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { IoMdPhotos } from 'react-icons/io';
 import { IoEyeOutline, IoPerson } from 'react-icons/io5';
@@ -7,13 +7,23 @@ import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../contexts/AuthContext';
 
 const SignUpPage = () => {
-
-
     const navigate = useNavigate();
     const { signUpUser, signInUserWithGoogle, updateUserInfo, setUser } = useContext(AuthContext)!;
 
+    const [passwordError, setPasswordError] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
+
+    // Password validation function
+    const validatePassword = (password: string) => {
+        if (password.length < 6) return 'Password must be at least 6 characters';
+        if (!/[A-Z]/.test(password)) return 'Password must contain at least one uppercase letter';
+        if (!/[a-z]/.test(password)) return 'Password must contain at least one lowercase letter';
+        return null;
+    };
+
     const handleSignUp = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setPasswordError(null);
 
         const target = e.target as typeof e.target & {
             name: { value: string };
@@ -27,9 +37,17 @@ const SignUpPage = () => {
         const email = target.email.value;
         const password = target.password.value;
 
+        // Validate password before sending
+        const pwdError = validatePassword(password);
+        if (pwdError) {
+            setPasswordError(pwdError);
+            return; // stop registration
+        }
+
+        setLoading(true);
+
         signUpUser(email, password)
             .then((result) => {
-                console.log('Sign Up Successful');
                 const user = result.user;
 
                 updateUserInfo({ displayName: name, photoURL: url })
@@ -43,18 +61,18 @@ const SignUpPage = () => {
             })
             .catch((error) => {
                 console.log(error);
-            });
+            })
+            .finally(() => setLoading(false));
     };
 
     const handleGoogleClick = () => {
+        setLoading(true);
         signInUserWithGoogle()
             .then(() => {
-                console.log('Login Successful');
                 navigate('/');
             })
-            .catch((error) => {
-                console.log(error);
-            });
+            .catch((error) => console.log(error))
+            .finally(() => setLoading(false));
     };
 
     return (
@@ -64,48 +82,55 @@ const SignUpPage = () => {
                     <form onSubmit={handleSignUp}>
                         <div className="mb-12">
                             <h1 className="text-slate-900 text-3xl font-bold">Sign up</h1>
-                            <p className="text-[15px] mt-6 text-slate-600">Already have an account <Link to={'/sign-in'} className="text-[#f89223] font-medium hover:underline ml-1 whitespace-nowrap">Login here</Link></p>
+                            <p className="text-[15px] mt-6 text-slate-600">
+                                Already have an account{' '}
+                                <Link to="/sign-in" className="text-[#f89223] font-medium hover:underline ml-1 whitespace-nowrap">
+                                    Login here
+                                </Link>
+                            </p>
                         </div>
 
                         <label className="text-slate-900 text-[13px] font-medium block mb-2">Name</label>
                         <div className="relative flex items-center">
                             <input name="name" type="text" required className="input w-full border-0 bg-gray-100 focus:outline-[#f89223]" placeholder="Enter Name" />
-                            <span className='size-5 absolute right-2 text-slate-400'><IoPerson /></span>
+                            <span className="size-5 absolute right-2 text-slate-400"><IoPerson /></span>
                         </div>
 
                         <label className="mt-8 text-slate-900 text-[13px] font-medium block mb-2">Photo URL</label>
                         <div className="relative flex items-center">
                             <input name="url" type="url" required className="input w-full border-0 bg-gray-100 focus:outline-[#f89223]" placeholder="Enter URL" />
-                            <span className='size-5 absolute right-2 text-slate-400'><IoMdPhotos /></span>
+                            <span className="size-5 absolute right-2 text-slate-400"><IoMdPhotos /></span>
                         </div>
 
                         <label className="mt-8 text-slate-900 text-[13px] font-medium block mb-2">Email</label>
                         <div className="relative flex items-center">
                             <input name="email" type="email" required className="input w-full border-0 bg-gray-100 focus:outline-[#f89223]" placeholder="Enter email" />
-                            <span className='size-5 absolute right-2 text-slate-400'><MdOutlineMailOutline /></span>
+                            <span className="size-5 absolute right-2 text-slate-400"><MdOutlineMailOutline /></span>
                         </div>
 
                         <label className="mt-8 text-slate-900 text-[13px] font-medium block mb-2">Password</label>
                         <div className="relative flex items-center">
                             <input name="password" type="password" required className="input w-full border-0 bg-gray-100 focus:outline-[#f89223]" placeholder="Enter password" />
-                            <span className='size-5 absolute right-2 text-slate-400'><IoEyeOutline /></span>
+                            <span className="size-5 absolute right-2 text-slate-400"><IoEyeOutline /></span>
                         </div>
+
+                        {/* Password error message */}
+                        {passwordError && <p className="text-red-500 text-sm mt-2">{passwordError}</p>}
 
                         <p className="text-[#f89223] font-medium text-sm hover:underline mt-8 text-right cursor-pointer">
                             Forgot Password?
                         </p>
 
-                        <button className="mt-12 btn w-full text-white bg-[#f89223]">
-                            Sign up
+                        <button type="submit" disabled={loading} className={`mt-12 btn w-full text-white ${loading ? 'bg-gray-400' : 'bg-[#f89223]'}`}>
+                            {loading ? 'Signing up...' : 'Sign up'}
                         </button>
 
                         <div className="divider">or</div>
 
-                        <button onClick={handleGoogleClick} type="button" className="w-full flex items-center justify-center gap-4 btn">
-                            <FcGoogle className='size-5' />
-                            Continue with google
+                        <button onClick={handleGoogleClick} type="button" disabled={loading} className={`w-full flex items-center justify-center gap-4 btn ${loading ? 'bg-gray-400' : ''}`}>
+                            <FcGoogle className="size-5" />
+                            Continue with Google
                         </button>
-
                     </form>
                 </div>
 
