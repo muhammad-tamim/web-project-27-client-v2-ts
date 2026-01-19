@@ -73,6 +73,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     // Context value
     const userInfo: AuthContextType = {
         user,
+        setUser,
         loading,
         signUpUser,
         signInUser,

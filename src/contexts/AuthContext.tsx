@@ -3,6 +3,7 @@ import type { User, UserCredential, UserProfile } from "firebase/auth";
 
 export type AuthContextType = {
     user: User | null;
+    setUser: React.Dispatch<React.SetStateAction<User | null>>;
     loading: boolean;
     signUpUser: (email: string, password: string) => Promise<UserCredential>;
     signInUser: (email: string, password: string) => Promise<UserCredential>;
