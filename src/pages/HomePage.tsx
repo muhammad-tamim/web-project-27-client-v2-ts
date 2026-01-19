@@ -10,9 +10,9 @@ const HomePage = () => {
         <div>
             <div className="space-y-20 mb-20">
                 <Hero></Hero>
-                <MostLikedRecipes></MostLikedRecipes>
                 <Categories></Categories>
                 <Cuisines></Cuisines>
+                <MostLikedRecipes></MostLikedRecipes>
                 <OurChefs></OurChefs>
                 <ContactUs></ContactUs>
             </div>
