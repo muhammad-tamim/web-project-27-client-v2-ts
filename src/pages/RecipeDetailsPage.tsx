@@ -2,9 +2,11 @@ import PagesBanner from '../components/ui/PagesBanner'
 import { useParams } from 'react-router'
 import { FaHeart } from 'react-icons/fa'
 import { MdAccessTime } from 'react-icons/md'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import LoadingSpinner from '../components/ui/LoadingSpinner'
+import toast from 'react-hot-toast'
+import { AuthContext } from '../contexts/AuthContext'
 
 interface Recipe {
     _id: string
@@ -12,6 +14,7 @@ interface Recipe {
     image: string
     instructions: string
     likes: number
+    likedBy?: string[] // emails of users who liked
     cuisine: string
     category: string
     difficulty: string
@@ -19,21 +22,27 @@ interface Recipe {
     cookTime: number
     totalTime: number
     ingredients: string
+    email: string
 }
 
-
 const RecipeDetailsPage = () => {
+
     const { id } = useParams<{ id: string }>()
     const [recipe, setRecipe] = useState<Recipe | null>(null)
     const [pending, setPending] = useState(true)
     const [error, setError] = useState<string | null>(null)
+    const [likes, setLikes] = useState(0)
 
+    const authContext = useContext(AuthContext);
+    const user = authContext?.user ?? null;
 
+    // Fetch recipe details
     useEffect(() => {
         if (!id) return
         axios.get(`http://localhost:3000/recipe-details/${id}`)
             .then(res => {
                 setRecipe(res.data)
+                setLikes(res.data.likes)
                 setPending(false)
             })
             .catch(err => {
@@ -43,10 +52,43 @@ const RecipeDetailsPage = () => {
             })
     }, [id])
 
+    const updateLikes = () => {
+        if (!user) return toast.error("Login to like!");
+        if (!recipe || !id) return;
+
+        // Prevent liking own recipe
+        if (user.email === recipe.email) {
+            return toast.error("You can't like your own recipe!");
+        }
+
+        if (!user.email) return;
+
+        // Prevent multiple likes        
+        if (recipe.likedBy?.includes(user.email)) {
+            return toast.error("You already liked this recipe!");
+        }
+
+        // Like it
+        axios.patch(`http://localhost:3000/recipe/like/${id}`)
+            .then(res => {
+                if (res.data.modifiedCount) {
+                    setLikes(prev => prev + 1);
+                    setRecipe(prev => prev ? {
+                        ...prev,
+                        likedBy: [...(prev.likedBy ?? []), user.email!]
+                    } : prev);
+                    toast.success("Liked the recipe!");
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                toast.error("Something went wrong");
+            });
+    }
+
     if (pending) return <LoadingSpinner minHScreen="min-h-screen" />
     if (error) return <p className="text-center text-red-500 mt-10">{error}</p>
     if (!recipe) return <p className="text-center mt-10">Recipe not found</p>
-
 
     const ingredientsArray = recipe.ingredients.split(",")
 
@@ -75,7 +117,6 @@ const RecipeDetailsPage = () => {
                     <div>
                         {/* Image */}
                         <figure className="relative aspect-4/3 overflow-hidden">
-
                             <img
                                 src={recipe.image}
                                 alt={recipe.title}
@@ -83,39 +124,32 @@ const RecipeDetailsPage = () => {
                             />
 
                             {/* Like overlay */}
-                            <div className="absolute top-3 cursor-pointer right-3 flex items-center gap-1 bg-white/80 backdrop-blur px-2 py-1 rounded-full text-sm shadow">
+                            <div onClick={updateLikes} className="cursor-pointer absolute top-3 right-3 flex items-center gap-1 bg-white/80 backdrop-blur px-2 py-1 rounded-full text-sm shadow">
                                 <FaHeart className="text-red-500" />
                                 <span className="text-gray-700">
-                                    {recipe.likes ?? 0}
+                                    {likes}
                                 </span>
                             </div>
-
                         </figure>
                     </div>
 
                     <div className='bg-[#f4f3f0] rounded-md px-8 py-4 flex flex-wrap justify-between items-center'>
                         <div className="flex items-center gap-3">
-                            <div>
-                                <MdAccessTime className="size-14 text-gray-400" />
-                            </div>
+                            <MdAccessTime className="size-14 text-gray-400" />
                             <div className="space-y-1">
                                 <h3 className="font-medium text-sm">Prep Time</h3>
                                 <p className="text-gray-600 text-lg">{recipe.prepTime} mins</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-3">
-                            <div>
-                                <MdAccessTime className="size-14 text-gray-400" />
-                            </div>
+                            <MdAccessTime className="size-14 text-gray-400" />
                             <div className="space-y-1">
                                 <h3 className="font-medium text-sm">Cook Time</h3>
                                 <p className="text-gray-600 text-lg">{recipe.cookTime} mins</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-3">
-                            <div>
-                                <MdAccessTime className="size-14 text-gray-400" />
-                            </div>
+                            <MdAccessTime className="size-14 text-gray-400" />
                             <div className="space-y-1">
                                 <h3 className="font-medium text-sm">Total Time</h3>
                                 <p className="text-gray-600 text-lg">{recipe.totalTime} mins</p>
@@ -127,13 +161,14 @@ const RecipeDetailsPage = () => {
                         <fieldset className="fieldset bg-base-100 border-base-300 rounded-box w-full border p-4">
                             <legend className="fieldset-legend text-3xl font-medium">Ingredients</legend>
 
-                            {ingredientsArray.map((ingredient, index) => <label key={index} className="label cursor-pointer flex gap-3">
-                                <input type="checkbox" className="checkbox peer" />
-                                <span className="peer-checked:line-through peer-checked:text-gray-400">
-                                    {ingredient}
-                                </span>
-                            </label>
-                            )}
+                            {ingredientsArray.map((ingredient, index) => (
+                                <label key={index} className="label cursor-pointer flex gap-3">
+                                    <input type="checkbox" className="checkbox peer" />
+                                    <span className="peer-checked:line-through peer-checked:text-gray-400">
+                                        {ingredient}
+                                    </span>
+                                </label>
+                            ))}
                         </fieldset>
                     </div>
 
