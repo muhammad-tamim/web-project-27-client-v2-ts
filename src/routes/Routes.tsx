@@ -51,7 +51,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: '/recipe-details/:id',
-        Component: RecipeDetailsPage
+        element: <PrivateRoute><RecipeDetailsPage></RecipeDetailsPage></PrivateRoute>
       },
       {
         path: '/recipe-category/:category',
