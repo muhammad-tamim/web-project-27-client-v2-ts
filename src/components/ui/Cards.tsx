@@ -65,7 +65,7 @@ const Cards = ({ recipe }: CardsProps) => {
 
                 {/* Button */}
                 <Link to={`/recipe-details/${recipe._id}`} className="mt-2">
-                    <button className="btn btn-warning btn-block text-white">
+                    <button className="btn bg-[#f89223] btn-block text-white">
                         View Details
                     </button>
                 </Link>
