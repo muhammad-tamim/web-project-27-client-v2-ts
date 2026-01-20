@@ -58,7 +58,7 @@ export const routes = createBrowserRouter([
         Component: RecipeCategoryPage
       },
       {
-        path: '/recipe-cuisine/:country',
+        path: '/recipe-cuisine/:cuisine',
         Component: RecipeCuisinePage
       },
       {
