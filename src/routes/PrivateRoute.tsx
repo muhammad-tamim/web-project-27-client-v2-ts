@@ -2,6 +2,7 @@ import { useContext } from "react";
 import type { ReactNode } from "react";
 import { Navigate, useLocation } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
+import LoadingSpinner from "../components/ui/LoadingSpinner";
 
 type PrivateRouteProps = {
     children: ReactNode;
@@ -16,7 +17,7 @@ const PrivateRoute = ({ children }: PrivateRouteProps) => {
     const { user, loading } = auth;
 
     if (loading) {
-        return <span className="loading loading-spinner loading-xl"></span>;
+        return <LoadingSpinner minHScreen={'min-h-screen'}></LoadingSpinner>
     }
 
     if (!user) {
