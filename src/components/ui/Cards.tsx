@@ -1,5 +1,7 @@
 import { FaHeart } from 'react-icons/fa'
 import { Link } from 'react-router'
+import { AuthContext } from '../../contexts/AuthContext'
+import { useContext } from 'react'
 
 interface Recipe {
     _id?: string
@@ -10,13 +12,18 @@ interface Recipe {
     cuisine: string
     category: string
     difficulty: string
+    email: string
 }
-
 interface CardsProps {
     recipe: Recipe
+    handleDelete?: (id: string) => void
 }
 
-const Cards = ({ recipe }: CardsProps) => {
+const Cards = ({ recipe, handleDelete }: CardsProps) => {
+    const authContext = useContext(AuthContext);
+    if (!authContext) return null;
+    const { user } = authContext;
+
     return (
         <div className="card bg-base-100 shadow-md hover:shadow-xl transition-shadow duration-300">
 
@@ -63,7 +70,21 @@ const Cards = ({ recipe }: CardsProps) => {
 
                 </div>
 
-                {/* Button */}
+                {/* Buttons */}
+
+                {user?.email === recipe.email && handleDelete && (
+                    <div className="flex justify-center gap-5">
+                        <button className="btn btn-info">Update</button>
+
+                        <button
+                            onClick={() => handleDelete(recipe._id!)}
+                            className="btn btn-error"
+                        >
+                            Delete
+                        </button>
+                    </div>
+                )}
+
                 <Link to={`/recipe-details/${recipe._id}`} className="mt-2">
                     <button className="btn bg-[#f89223] btn-block text-white">
                         View Details
