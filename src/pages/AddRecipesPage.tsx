@@ -3,7 +3,8 @@ import PagesBanner from '../components/ui/PagesBanner';
 import bg from '../assets/images/baked-chicken-breast.jpg'
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import { useState, type FormEvent } from 'react';
+import { useContext, type FormEvent } from 'react';
+import { AuthContext } from '../contexts/AuthContext';
 
 
 interface Recipe {
@@ -19,14 +20,16 @@ interface Recipe {
     cookTime: number;
     totalTime: number;
     likes: number;
+    email: string
 }
 
 
 const AddRecipesPage = () => {
 
-    const [recipes, setRecipes] = useState<Recipe[]>([]);
-    const [singleRecipes, setSingleRecipes] = useState<Recipe | null>(null);
-    const [id, setId] = useState<string | undefined>();
+    const authContext = useContext(AuthContext);
+    if (!authContext) return null;
+
+    const { user } = authContext;
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -45,14 +48,13 @@ const AddRecipesPage = () => {
             prepTime: Number(formData.get('prepTime')),
             cookTime: Number(formData.get('cookTime')),
             totalTime: Number(formData.get('totalTime')),
-            likes: 0
+            likes: 0,
+            email: user?.email || ''
         };
 
         axios.post('http://localhost:3000/recipes', newRecipe)
             .then(res => {
                 if (res.data.insertedId) {
-                    newRecipe._id = res.data.insertedId;
-                    setRecipes(prev => [...prev, newRecipe]);
                     toast.success('Recipe submitted successfully!');
                     form.reset();
                 }
