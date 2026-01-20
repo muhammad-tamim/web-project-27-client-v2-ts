@@ -73,7 +73,6 @@ const MyRecipesPage = () => {
                         {recipes.map((recipe) =>
                             <Cards key={recipe._id} handleDelete={handleDelete} recipe={recipe}></Cards>
                         )}
-
                     </div >
 
                 </div >

@@ -13,6 +13,7 @@ import RecipeCategoryPage from "../pages/RecipeCategoryPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import ErrorElement from "../components/ui/ErrorElement";
 import PrivateRoute from "./PrivateRoute";
+import RecipeUpdatePage from "../pages/RecipeUpdatePage";
 
 
 export const routes = createBrowserRouter([
@@ -52,6 +53,10 @@ export const routes = createBrowserRouter([
       {
         path: '/recipe-details/:id',
         element: <PrivateRoute><RecipeDetailsPage></RecipeDetailsPage></PrivateRoute>
+      },
+      {
+        path: '/update-recipe/:id',
+        element: <PrivateRoute><RecipeUpdatePage></RecipeUpdatePage></PrivateRoute>
       },
       {
         path: '/recipe-category/:category',

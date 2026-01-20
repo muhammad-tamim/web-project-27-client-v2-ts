@@ -74,7 +74,7 @@ const Cards = ({ recipe, handleDelete }: CardsProps) => {
 
                 {user?.email === recipe.email && handleDelete && (
                     <div className="flex justify-center gap-5">
-                        <button className="btn btn-info">Update</button>
+                        <Link to={`/update-recipe/${recipe._id}`}><button className="btn btn-info">Update</button></Link>
 
                         <button
                             onClick={() => handleDelete(recipe._id!)}

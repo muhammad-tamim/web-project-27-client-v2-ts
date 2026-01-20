@@ -1,6 +1,6 @@
 import PagesBanner from '../components/ui/PagesBanner';
 
-import bg from '../assets/images/baked-chicken-breast.jpg'
+import bg from '../assets/images/Recipes-background1.jpg'
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useContext, type FormEvent } from 'react';
