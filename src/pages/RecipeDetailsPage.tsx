@@ -1,14 +1,58 @@
-import PagesBanner from "../components/ui/PagesBanner";
-import bg from '../assets/images/baked-chicken-breast.jpg'
-import { useParams } from "react-router";
-import { FaHeart } from "react-icons/fa";
-import { MdAccessTime } from "react-icons/md";
+import PagesBanner from '../components/ui/PagesBanner'
+import { useParams } from 'react-router'
+import { FaHeart } from 'react-icons/fa'
+import { MdAccessTime } from 'react-icons/md'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import LoadingSpinner from '../components/ui/LoadingSpinner'
+
+interface Recipe {
+    _id: string
+    title: string
+    image: string
+    instructions: string
+    likes: number
+    cuisine: string
+    category: string
+    difficulty: string
+    prepTime: number
+    cookTime: number
+    totalTime: number
+    ingredients: string
+}
+
 
 const RecipeDetailsPage = () => {
-    const { title } = useParams()
+    const { id } = useParams<{ id: string }>()
+    const [recipe, setRecipe] = useState<Recipe | null>(null)
+    const [pending, setPending] = useState(true)
+    const [error, setError] = useState<string | null>(null)
+
+
+    useEffect(() => {
+        if (!id) return
+        axios.get(`http://localhost:3000/recipe-details/${id}`)
+            .then(res => {
+                setRecipe(res.data)
+                setPending(false)
+            })
+            .catch(err => {
+                console.error(err)
+                setError('Failed to load recipe')
+                setPending(false)
+            })
+    }, [id])
+
+    if (pending) return <LoadingSpinner minHScreen="min-h-screen" />
+    if (error) return <p className="text-center text-red-500 mt-10">{error}</p>
+    if (!recipe) return <p className="text-center mt-10">Recipe not found</p>
+
+
+    const ingredientsArray = recipe.ingredients.split(",")
+
     return (
         <div>
-            <PagesBanner title={title ?? "Recipe Details"} bg={bg}></PagesBanner>
+            <PagesBanner title={recipe.title ?? "Recipe Details"} bg={recipe.image}></PagesBanner>
             <div className='py-10 lg:py-20 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 px-5 lg:px-10 xl:px-0'>
 
                 {/* left side */}
@@ -16,37 +60,37 @@ const RecipeDetailsPage = () => {
                     <div className="bg-[#f4f3f0] rounded-md px-8 py-4 flex justify-between items-center">
                         <div className="space-y-1">
                             <h3 className="font-medium text-sm">Category</h3>
-                            <p className="text-gray-600 text-lg">Chicken</p>
+                            <p className="text-gray-600 text-lg">{recipe.category}</p>
                         </div>
                         <div className="space-y-1">
                             <h3 className="font-medium text-sm">Cuisine</h3>
-                            <p className="text-gray-600 text-lg">Indian</p>
+                            <p className="text-gray-600 text-lg">{recipe.cuisine}</p>
                         </div>
                         <div className="space-y-1">
                             <h3 className="font-medium text-sm">Difficulty</h3>
-                            <p className="text-gray-600 text-lg">Easy</p>
+                            <p className="text-gray-600 text-lg">{recipe.difficulty}</p>
                         </div>
                     </div>
 
-                    <div className='mb-0 bg-[#f4f3f0]  rounded-t-md px-8 py-4 flex justify-between items-center'>
-                        <div className='flex gap-2 items-center'>
-                            <div>
-                                <div className="avatar">
-                                    <div className="w-6 rounded-full">
-                                        <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
-                                    </div>
-                                </div>
+                    <div>
+                        {/* Image */}
+                        <figure className="relative aspect-4/3 overflow-hidden">
+
+                            <img
+                                src={recipe.image}
+                                alt={recipe.title}
+                                className="w-full h-full object-cover"
+                            />
+
+                            {/* Like overlay */}
+                            <div className="absolute top-3 cursor-pointer right-3 flex items-center gap-1 bg-white/80 backdrop-blur px-2 py-1 rounded-full text-sm shadow">
+                                <FaHeart className="text-red-500" />
+                                <span className="text-gray-700">
+                                    {recipe.likes ?? 0}
+                                </span>
                             </div>
 
-                            <p className="text-gray-600">By Muhammd Tamim</p>
-                        </div>
-                        <div className='flex gap-1 items-center'>
-                            <span><FaHeart className='text-red-500 cursor-pointer'></FaHeart></span>
-                            <span className="text-gray-600">13 likes</span>
-                        </div>
-                    </div>
-                    <div>
-                        <img src={bg} className="rounded-b-md" alt="" />
+                        </figure>
                     </div>
 
                     <div className='bg-[#f4f3f0] rounded-md px-8 py-4 flex flex-wrap justify-between items-center'>
@@ -56,7 +100,7 @@ const RecipeDetailsPage = () => {
                             </div>
                             <div className="space-y-1">
                                 <h3 className="font-medium text-sm">Prep Time</h3>
-                                <p className="text-gray-600 text-lg">30 mins</p>
+                                <p className="text-gray-600 text-lg">{recipe.prepTime} mins</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-3">
@@ -65,7 +109,7 @@ const RecipeDetailsPage = () => {
                             </div>
                             <div className="space-y-1">
                                 <h3 className="font-medium text-sm">Cook Time</h3>
-                                <p className="text-gray-600 text-lg">50 mins</p>
+                                <p className="text-gray-600 text-lg">{recipe.cookTime} mins</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-3">
@@ -74,7 +118,7 @@ const RecipeDetailsPage = () => {
                             </div>
                             <div className="space-y-1">
                                 <h3 className="font-medium text-sm">Total Time</h3>
-                                <p className="text-gray-600 text-lg">1 hr 20 mins</p>
+                                <p className="text-gray-600 text-lg">{recipe.totalTime} mins</p>
                             </div>
                         </div>
                     </div>
@@ -83,40 +127,19 @@ const RecipeDetailsPage = () => {
                         <fieldset className="fieldset bg-base-100 border-base-300 rounded-box w-full border p-4">
                             <legend className="fieldset-legend text-3xl font-medium">Ingredients</legend>
 
-                            <label className="label cursor-pointer flex gap-3">
+                            {ingredientsArray.map((ingredient, index) => <label key={index} className="label cursor-pointer flex gap-3">
                                 <input type="checkbox" className="checkbox peer" />
                                 <span className="peer-checked:line-through peer-checked:text-gray-400">
-                                    1 lb ground beef
+                                    {ingredient}
                                 </span>
                             </label>
-
-                            <label className="label cursor-pointer flex gap-3">
-                                <input type="checkbox" className="checkbox peer" />
-                                <span className="peer-checked:line-through peer-checked:text-gray-400">
-                                    1 egg
-                                </span>
-                            </label>
-
-                            <label className="label cursor-pointer flex gap-3">
-                                <input type="checkbox" className="checkbox peer" />
-                                <span className="peer-checked:line-through peer-checked:text-gray-400">
-                                    2 cups water
-                                </span>
-                            </label>
-
-                            <label className="label cursor-pointer flex gap-3">
-                                <input type="checkbox" className="checkbox peer" />
-                                <span className="peer-checked:line-through peer-checked:text-gray-400">
-                                    4 cloves of garlic
-                                </span>
-                            </label>
+                            )}
                         </fieldset>
                     </div>
+
                     <div>
                         <h3 className="text-3xl font-medium">Instructions</h3>
-                        <p className="text-gray-600 border-l-2 border-l-[#f89223] pl-5 mt-3">
-                            A handful of simple ingredients typify the fresh, vibrant flavors of Greek cooking. Lorem ipsum dolor sit amet.
-                        </p>
+                        <p className="text-gray-600 border-l-2 border-l-[#f89223] pl-5 mt-3">{recipe.instructions}</p>
                     </div>
                 </div>
 

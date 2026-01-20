@@ -21,9 +21,9 @@ const MostLikedRecipes = () => {
                 <h2 className='text-3xl md:text-5xl text-center font-semibold mb-20'>Top Recipes</h2>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-10 px-5 xl:px-0'>
 
-                    {slideItems.map((item) =>
+                    {/* {slideItems.map((item) =>
                         <Cards key={item.id} item={item}></Cards>
-                    )}
+                    )} */}
 
                 </div >
 
