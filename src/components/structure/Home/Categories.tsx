@@ -12,23 +12,23 @@ const Categories = () => {
             <div className='max-w-7xl mx-auto'>
                 <h2 className='text-3xl md:text-5xl text-center font-semibold mb-20'>Categories</h2>
                 <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 justify-items-center'>
-                    <Link to={'/recipe-category/appetizers'}>
+                    <Link to={'/recipe-category/Appetizers'}>
                         <img src={category1} alt="image" className='rounded-full w-48 hover:rotate-12 transition-transform duration-500' />
                         <p className='text-center text-lg font-medium mt-5'>Appetizers</p>
                     </Link>
-                    <Link to={'/recipe-category/beef'}>
+                    <Link to={'/recipe-category/Beef'}>
                         <img src={category2} alt="image" className='rounded-full w-48 hover:rotate-12 transition-transform duration-500' />
                         <p className='text-center text-lg font-medium mt-5'>Beef</p>
                     </Link>
-                    <Link to={'/recipe-category/baked'}>
+                    <Link to={'/recipe-category/Chicken'}>
                         <img src={category3} alt="image" className='rounded-full w-48 hover:rotate-12 transition-transform duration-500' />
-                        <p className='text-center text-lg font-medium mt-5'>Baked</p>
+                        <p className='text-center text-lg font-medium mt-5'>Chicken</p>
                     </Link>
-                    <Link to={'/recipe-category/vegetables'}>
+                    <Link to={'/recipe-category/Vegetarian'}>
                         <img src={category4} alt="image" className='rounded-full w-48 hover:rotate-12 transition-transform duration-500' />
-                        <p className='text-center text-lg font-medium mt-5'>Vegetables</p>
+                        <p className='text-center text-lg font-medium mt-5'>Vegetarian</p>
                     </Link>
-                    <Link to={'/recipe-category/desserts'}>
+                    <Link to={'/recipe-category/Desserts'}>
                         <img src={category5} alt="image" className='rounded-full w-48 hover:rotate-12 transition-transform duration-500' />
                         <p className='text-center text-lg font-medium mt-5'>Desserts</p>
                     </Link>
