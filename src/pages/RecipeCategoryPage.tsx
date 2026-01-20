@@ -42,7 +42,7 @@ const RecipeCategoryPage = () => {
 
     return (
         <div>
-            <PagesBanner title={category} bg={bg}></PagesBanner>
+            <PagesBanner title={category!} bg={bg}></PagesBanner>
             <div className='py-10 lg:py-20'>
                 <div className='max-w-7xl mx-auto'>
 
