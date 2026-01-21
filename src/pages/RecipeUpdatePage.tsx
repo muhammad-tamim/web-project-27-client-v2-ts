@@ -37,7 +37,7 @@ const RecipeUpdatePage = () => {
 
     useEffect(() => {
         if (!id) return
-        axios.get(`http://localhost:3000/recipe-details/${id}`)
+        axios.get(`https://web-project-27-server-v1-monolithic.onrender.com/recipe-details/${id}`)
             .then(res => {
                 setRecipe(res.data)
                 setPending(false)
@@ -69,7 +69,7 @@ const RecipeUpdatePage = () => {
         };
 
 
-        axios.patch(`http://localhost:3000/recipe/${id}`, updatedRecipe)
+        axios.patch(`https://web-project-27-server-v1-monolithic.onrender.com/recipe/${id}`, updatedRecipe)
             .then(res => {
                 if (res.data.modifiedCount) {
                     toast.success('Recipe Updated successfully!');

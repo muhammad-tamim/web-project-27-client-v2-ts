@@ -39,7 +39,7 @@ const RecipeDetailsPage = () => {
     // Fetch recipe details
     useEffect(() => {
         if (!id) return
-        axios.get(`http://localhost:3000/recipe-details/${id}`)
+        axios.get(`https://web-project-27-server-v1-monolithic.onrender.com/recipe-details/${id}`)
             .then(res => {
                 setRecipe(res.data)
                 setLikes(res.data.likes)
@@ -69,7 +69,7 @@ const RecipeDetailsPage = () => {
         }
 
         // Like it
-        axios.patch(`http://localhost:3000/recipe/like/${id}`)
+        axios.patch(`https://web-project-27-server-v1-monolithic.onrender.com/recipe/like/${id}`)
             .then(res => {
                 if (res.data.modifiedCount) {
                     setLikes(prev => prev + 1);

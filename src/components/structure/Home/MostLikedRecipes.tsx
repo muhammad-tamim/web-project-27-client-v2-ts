@@ -24,7 +24,7 @@ const MostLikedRecipes = () => {
     const [pending, setPending] = useState(true)
 
     useEffect(() => {
-        axios.get('http://localhost:3000/top-recipes')
+        axios.get('https://web-project-27-server-v1-monolithic.onrender.com/top-recipes')
             .then(res => {
                 setRecipes(res.data)
                 setPending(false)

@@ -28,7 +28,7 @@ const RecipeCuisinePage = () => {
     const [pending, setPending] = useState(true)
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/recipe-cuisine/${cuisine}`)
+        axios.get(`https://web-project-27-server-v1-monolithic.onrender.com/recipe-cuisine/${cuisine}`)
             .then(res => {
                 setRecipes(res.data)
                 setPending(false)

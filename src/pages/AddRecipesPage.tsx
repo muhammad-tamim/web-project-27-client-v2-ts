@@ -52,7 +52,7 @@ const AddRecipesPage = () => {
             email: user?.email || ''
         };
 
-        axios.post('http://localhost:3000/recipes', newRecipe)
+        axios.post('https://web-project-27-server-v1-monolithic.onrender.com/recipes', newRecipe)
             .then(res => {
                 if (res.data.insertedId) {
                     toast.success('Recipe submitted successfully!');

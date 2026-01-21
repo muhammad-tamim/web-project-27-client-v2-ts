@@ -33,7 +33,7 @@ const MyRecipesPage = () => {
     const [pending, setPending] = useState(true)
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/recipes/${user?.email}`)
+        axios.get(`https://web-project-27-server-v1-monolithic.onrender.com/recipes/${user?.email}`)
             .then(res => {
                 setRecipes(res.data)
                 setPending(false)
@@ -41,7 +41,7 @@ const MyRecipesPage = () => {
     }, [user?.email])
 
     const handleDelete = (id: string) => {
-        axios.delete(`http://localhost:3000/recipe/${id}`)
+        axios.delete(`https://web-project-27-server-v1-monolithic.onrender.com/recipe/${id}`)
             .then(res => {
                 if (res.data.deletedCount) {
                     toast.success("Recipe Deleted")

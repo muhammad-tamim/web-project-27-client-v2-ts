@@ -27,7 +27,7 @@ const AllRecipesPage = () => {
     const [selectedCuisine, setSelectedCuisine] = useState<string>('all')
 
     useEffect(() => {
-        axios.get('http://localhost:3000/recipes')
+        axios.get('https://web-project-27-server-v1-monolithic.onrender.com/recipes')
             .then(res => {
                 setRecipes(res.data)
                 setPending(false)

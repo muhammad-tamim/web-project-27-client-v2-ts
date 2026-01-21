@@ -30,7 +30,7 @@ const RecipeCategoryPage = () => {
     const [recipes, setRecipes] = useState<Recipe[]>([])
     const [pending, setPending] = useState(true)
     useEffect(() => {
-        axios.get(`http://localhost:3000/recipe-category/${category}`)
+        axios.get(`https://web-project-27-server-v1-monolithic.onrender.com/recipe-category/${category}`)
             .then(res => {
                 setRecipes(res.data)
                 setPending(false)
