@@ -8,13 +8,13 @@ https://github.com/user-attachments/assets/27faf488-667d-40d0-b876-848019a7c54e
 
 ## Live Links: 
 
-- client: https://web-project-27-client-v2-ts.netlify.app/
+- client: https://web-project-27-client.netlify.app/
 - server: https://web-project-27-server-v1-monolithic.onrender.com
 
 ## Repository links: 
 
-- client: https://github.com/muhammad-tamim/web-project-27-client-v2-ts
-- server: https://github.com/muhammad-tamim/web-project-27-server-v1-monolithic-architecture
+- client: https://github.com/muhammad-tamim/web-project-27-client
+- server: https://github.com/muhammad-tamim/web-project-27-server
 
 ## Technologies Used:
 
