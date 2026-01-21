@@ -17,12 +17,14 @@ interface Recipe {
     prepTime: number
     cookTime: number
     totalTime: number
+    email: string
 }
 
 const AllRecipesPage = () => {
     const [recipes, setRecipes] = useState<Recipe[]>([])
     const [pending, setPending] = useState(true)
     const [error, setError] = useState<string | null>(null)
+    const [selectedCuisine, setSelectedCuisine] = useState<string>('all')
 
     useEffect(() => {
         axios.get('http://localhost:3000/recipes')
@@ -37,6 +39,9 @@ const AllRecipesPage = () => {
             })
     }, [])
 
+
+    const filteredRecipes = selectedCuisine === 'all' ? recipes : recipes.filter(recipe => recipe.cuisine === selectedCuisine)
+
     if (pending) return <LoadingSpinner minHScreen="min-h-screen" />
     if (error) return <p className="text-center text-red-500 mt-10">{error}</p>
 
@@ -45,9 +50,24 @@ const AllRecipesPage = () => {
             <PagesBanner title="All Recipes" bg={bg} />
 
             <div className="py-10 lg:py-20">
+
+
                 <div className="max-w-7xl mx-auto">
+                    <div className='flex justify-end pb-10'>
+                        <select value={selectedCuisine} onChange={(e) => setSelectedCuisine(e.target.value)} className="select border-[#f89223] outline-0">
+                            <option disabled={true}>Pick a Cuisine</option>
+                            <option value="all">All Cuisines</option>
+                            <option value="Indian">Indian</option>
+                            <option value="Mexican">Mexican</option>
+                            <option value="Italian">Italian</option>
+                            <option value="Chinese">Chinese</option>
+                            <option value="Korean">Korean</option>
+                            <option value="Japanese">Japanese</option>
+                        </select>
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-10 px-5 xl:px-0">
-                        {recipes.map(recipe => (
+                        {filteredRecipes.map(recipe => (
                             <Cards key={recipe._id} recipe={recipe} />
                         ))}
                     </div>
