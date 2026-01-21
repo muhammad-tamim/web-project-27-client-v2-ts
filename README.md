@@ -1,60 +1,56 @@
-<!-- ## What Problem I Solve By This Project:  -->
-## Project Name:
+# Project Name: Thatix (Recipe Sharing Platform)
 
-## Project Description:
+This is the frontend application for Thatix. It provides a modern, responsive user interface where users can create, manage, discover, and like recipes and enjoy a smooth user experience.
 
-## Project Live Demo Video:
+## Demo Video:
 
-## Live Site Link: 
+https://github.com/user-attachments/assets/27faf488-667d-40d0-b876-848019a7c54e
 
-https://web-project-26.netlify.app/news/1
+## Live Links: 
+
+- client: https://web-project-27-client-v2-ts.netlify.app/
+- server: https://web-project-27-server-v1-monolithic.onrender.com
+
+## Repository links: 
+
+- client: https://github.com/muhammad-tamim/web-project-27-client-v2-ts
+- server: https://github.com/muhammad-tamim/web-project-27-server-v1-monolithic-architecture
 
 ## Technologies Used:
 
+### Frontend: 
+
+- TypeScript
+- React.js
+- React Router
+- Axios
+- firebase auth
+- Tailwind CSS
+- DaisyUI
+- Swiper.js
+
+### Backend: 
+
+- Node.js
+- Express
+- MongoDB
+- dotenv
+- cors
+
 ## Features:
+
+- Create, update, and delete recipes
+- View all recipes
+- Like recipes
+- Get top 6 most liked recipes
+- Filter recipes by category
+- Filter recipes by cuisine
+- View recipes created by a specific user
+- Responsive design for all screen sizes
 
 ## What I Learned: 
 
-1. How to use group class on hover: 
-
-![gif](./src/assets/gifs/group-class.gif)
-
-```jsx
-import { GoDotFill } from "react-icons/go";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import { Link, NavLink } from "react-router";
-
-const NavLinks = () => {
-    return (
-        <div>
-            <div className="dropdown dropdown-hover">
-                <NavLink to={'/'} className={({ isActive }) => isActive ? 'text-black flex items-center gap-1' : 'text-[#8c8e91] flex items-center gap-1'} tabIndex={0} role="button">
-                    <span className="hover:text-black">Home</span>
-                    <span className="hover:text-black"><MdOutlineKeyboardArrowDown /></span>
-                </ NavLink>
-                <ul tabIndex="-1" className="dropdown-content border-t-3 border-t-[#f79e23] menu bg-base-100 z-1 w-44 p-2 shadow-sm">
-                    <li className="group border-b border-[#eae9e7]">
-                        <Link to={'/homeSearch'}>
-                            <span className="hidden group-hover:block group-hover:text-[#f79e23]"><GoDotFill /></span>
-                            <span>Home Search</span>
-                        </Link>
-                    </li>
-                    <li className="group">
-                        <Link to={'/'}>
-                            <span className="hidden group-hover:block group-hover:text-[#f79e23]"><GoDotFill /></span>
-                            <span>Home Slider</span>
-                        </Link>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    );
-};
-
-export default NavLinks;
-```
-
-2. How to make a array by just a number: 
+1. How to make a array by just a number: 
 
 ```jsx
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -111,7 +107,7 @@ const Hero = () => {
 export default Hero;
 ```
 
-3. How to make a black overlay: 
+2. How to make a black overlay: 
 
 ```tsx
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -168,7 +164,7 @@ const Hero = () => {
 export default Hero;
 ```
 
-4. How to change swiper.js left and right arrow and pagination bullet color: 
+3. How to change swiper.js left and right arrow and pagination bullet color: 
 
 ```css
 .swiper-button-next,
@@ -183,7 +179,7 @@ export default Hero;
 }
 ```
 
-5. How to make todo using tailwind: 
+4. How to make todo using tailwind: 
 
 ![image](./src/assets/gifs/todo.gif)
 
@@ -286,8 +282,13 @@ export default Hero;
 ```
 
 ## Limitation:
+- No role-based authorization on the frontend
+- No Dashboard
 
 ## Contact: 
 
-tamim.muhammad2005@gmail.com | https://www.linkedin.com/in/tamim-muhammad
- 
+Email: contact2tamim@gmail.com | LinkedIn: https://www.linkedin.com/in/tamim-muhammad
+
+--- 
+
+If you like this project, feel free to give it a star ⭐!
