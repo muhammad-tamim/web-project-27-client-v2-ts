@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import LoadingSpinner from '../../ui/LoadingSpinner';
 
-interface Recipe {
+export interface Recipe {
     _id: string
     title: string
     image: string
@@ -17,6 +17,7 @@ interface Recipe {
     prepTime: number
     cookTime: number
     totalTime: number
+    email: string
 }
 
 const MostLikedRecipes = () => {

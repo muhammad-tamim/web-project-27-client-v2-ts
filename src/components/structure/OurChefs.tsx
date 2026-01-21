@@ -12,7 +12,9 @@ import chef6 from '../../assets/images/chef-6.jpg'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 
+// @ts-ignore
 import 'swiper/css';
+// @ts-ignore
 import 'swiper/css/pagination';
 
 const chefs = [

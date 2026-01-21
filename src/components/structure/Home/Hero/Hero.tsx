@@ -5,10 +5,16 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import LoadingSpinner from '../../../ui/LoadingSpinner';
 
+// TS-safe Swiper imports
+// @ts-ignore
 import 'swiper/css';
+// @ts-ignore
 import 'swiper/css/pagination';
+// @ts-ignore
 import 'swiper/css/navigation';
-import './styles.css';
+import './HeroStyles.css';
+
+import './HeroStyles.css';
 import { FaHeart } from 'react-icons/fa';
 
 interface Recipe {

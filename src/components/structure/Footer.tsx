@@ -1,4 +1,3 @@
-import React from 'react';
 import logo from '../../assets/images/logo.png'
 import { navItems } from '../../utils/navItems';
 import { Link } from 'react-router';
@@ -12,7 +11,7 @@ const Footer = () => {
                 </aside>
                 <nav>
                     <h6 className="footer-title">Pages</h6>
-                    {navItems.map((item) => <Link to={item.to} key={item.id} className='hover:underline'>{item.label}</Link>)}
+                    {navItems.map((item) => <Link to={'item.to'} key={item.id} className='hover:underline'>{item.label}</Link>)}
                 </nav>
                 <nav>
                     <h6 className="footer-title">Company</h6>
